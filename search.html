@@ -9,19 +9,25 @@
     </head>
     <body>
         <header>
-            <h1>Welcome!</h1>
-            <p>This is a website where you will be able to search reviews for arcades!</p>
-            <button type="button">
-                log in
-            </button>
-            <button type="button">
-                register
-            </button>
+            <h1 class="home">Arcade</h1>
+            <!--bundling the buttons used for user auth-->
+            <div class="user">
+                <button style ="border: none;" class="user" type="button">
+                    Log In
+                </button>
+                <a href="registration.html">
+                    <button style ="border: 1px solid black;"class="user" type="button">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
         </header>
         <div class="mainSearch">
+            <!-- Form which contains the search elements-->
             <form class="search">
                 <input type="text" placeholder="Find an arcade...">
                 <button type="submit">
+                    <!-- icon within the button-->
                     <span class="material-icons">
                         search
                     </span>
@@ -29,8 +35,18 @@
             </form>
         </div>
         <footer>
-            <h1>FOOTER</h1>
-            <p>COMING SOON</p>
+            <div>
+                <h1>About</h1>
+                <p>Website for COMP SCI 4WW3. The purpose of this website 
+                    is to allow users to read and write reviews of various arcades around the world
+
+                </p>
+            </div>
+            <div>
+                <h1>Author</h1>
+                <p>This website was created by Christian Trinh</p>
+            </div>
+            
         </footer>
     </body>
 </html>

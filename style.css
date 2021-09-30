@@ -1,18 +1,45 @@
 body {
-
+    /*setting the font */
     font-family: 'Roboto';
 }
 
 header {
     background-color: coral;
-    text-align: center; 
+    /* aligning the contents in the header*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+button {
+    /* Making all cursors turn into a pointer when hovering a button */
+    cursor: pointer;
+}
+
+.user button {
+    background: coral;
+    /*rounded borders*/
+    border-radius: 5px;
+    /*button dimensions*/
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    /*adjusting position*/
+}
+
+.user button:hover {
+    /*changing the button background to a darker shade when hovered*/
+    background: rgb(221, 111, 71);
+}
 footer {
     background-color: darkslategray;
-    display: block;
+    display: grid;
+    grid-template-columns: 25% 25%;
+    justify-content: center;
+    grid-gap: 50px;
 }
 .mainSearch{
+    /*setting background image behind the search bar*/
     background-image: url(assets/arcade2.jpg);
     padding-top: 200px;
     padding-bottom: 200px;
@@ -20,12 +47,12 @@ footer {
     background-size: 100% auto;
 }
 form.search {
+    /*centering the search elements*/
     justify-content: center;
     display: flex;
-    margin-top: 25px;
     
 }
-form.search input[type=text] {
+form input[type=text] {
     background: #f1f1f1;
     font-size: 18px;
     padding: 8px;
@@ -43,10 +70,36 @@ form.search button {
     display:block; 
     border-radius: 0px 5px 5px 0px;
     border: 1px solid black;
-    cursor: pointer;
 }
 
 /* from notes*/
 form.search i {
     margin: auto;
+}
+
+.register {
+    display: grid;
+    grid-template-columns: 5% 5% 5% 5% 5% 5%;
+    grid-gap: 20px;
+}
+
+.whole {
+    grid-column: auto / span 6;
+}
+.half{
+    grid-column: auto / span 3;
+}
+
+.third {
+    grid-column: auto / span 2;
+}
+
+
+.password{
+    grid-column: 1;
+    grid-row: 3;
+}
+.passwordr{
+    grid-column: 2;
+    grid-row: 3;
 }
