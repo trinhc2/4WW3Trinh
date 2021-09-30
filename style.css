@@ -1,0 +1,52 @@
+body {
+
+    font-family: 'Roboto';
+}
+
+header {
+    background-color: coral;
+    text-align: center; 
+}
+
+footer {
+    background-color: darkslategray;
+    display: block;
+}
+.mainSearch{
+    background-image: url(assets/arcade2.jpg);
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+form.search {
+    justify-content: center;
+    display: flex;
+    margin-top: 25px;
+    
+}
+form.search input[type=text] {
+    background: #f1f1f1;
+    font-size: 18px;
+    padding: 8px;
+    float:left;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid black;
+}
+
+form.search button {
+    background: salmon;
+    padding: 6px;
+    float:left;
+    display:block; 
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/* from notes*/
+form.search i {
+    margin: auto;
+}
