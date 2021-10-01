@@ -11,6 +11,17 @@ header {
     align-items: center;
 }
 
+.home {
+    margin-left: 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline
+}
 button {
     /* Making all cursors turn into a pointer when hovering a button */
     cursor: pointer;
@@ -41,10 +52,9 @@ footer {
 .mainSearch{
     /*setting background image behind the search bar*/
     background-image: url(assets/arcade2.jpg);
-    padding-top: 200px;
-    padding-bottom: 200px;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
+    padding-top: 200px;
 }
 form.search {
     /*centering the search elements*/
@@ -83,6 +93,23 @@ form.search i {
     grid-gap: 20px;
 }
 
+.register input {
+    width: 100%;
+    padding: 5px;
+}
+
+.register p {
+    margin: 0;
+}
+
+.register button {
+    border-radius: 5px;
+    background: salmon;
+    width: 50%;
+    height: 40px;
+    border: 1px solid black;
+}
+
 .whole {
     grid-column: auto / span 6;
 }
@@ -102,4 +129,13 @@ form.search i {
 .passwordr{
     grid-column: 2;
     grid-row: 3;
+}
+
+.credits{
+    text-align:center;
+    color: white;
+    font-weight: bold;
+    margin-top: 200px;
+    /*setting font to scale with the screen to a max of size 12*/
+    font-size: min(1.5vw,12px);
 }
