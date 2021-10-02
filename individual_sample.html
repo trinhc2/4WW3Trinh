@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/object.css">
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <title>Mikado Arcade</title>
+    </head>
+    <body>
+        <header>
+            <!--menu items-->
+            <a href="search.html">
+                <h1 class="home">Home</h1>
+            </a>
+            <a href="submission.html">
+                <h1> Submit A Review</h1>
+            </a>
+            
+            <!--bundling the buttons used for user auth-->
+            <div class="user">
+                <button style ="border: none;" class="user" type="button">
+                    Log In
+                </button>
+                <a href="registration.html">
+                    <button style ="border: 1px solid black; margin-right: 10px;"class="user" type="button">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+        </header>
+        <div class="objWrapper">
+            <div class="objMain">
+                <div class="objDesc">
+                    <p class="name">Mikado Arcade</p>
+                    <div class="rating">
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star_half
+                        </span>
+                        <!--user can click on reviews to jump to review section-->
+                        <a href="#reviews">
+                            <p class="numReview">2 Reviews</p>
+                        </a>
+                    </div>
+                    <p class="hours">Open</p>
+                    <p class="hours">10:00 AM - 12:00AM</p>
+                </div>
+                <img src="assets/mikado.jfif">
+            </div>
+
+            <!--Category: Location and Hours-->
+            <div class = "catWrapper">
+                <p>Location and Hours</p>
+                <img src="assets/mikadomap.png">
+                <div class="dateGrid">
+                    <p style="margin-block-start: 0px;">Sun</p>
+                    <p style="margin-block-start: 0px;">10:00 AM - 12:00AM</p>
+                    <p>Mon</p>
+                    <p>10:00 AM - 12:00AM</p>
+                    <p>Tue</p>
+                    <p>10:00 AM - 12:00AM</p>
+                    <p>Wed</p>
+                    <p>10:00 AM - 12:00AM</p>
+                    <p>Thu</p>
+                    <p>10:00 AM - 12:00AM</p>
+                    <p>Fri</p>
+                    <p>10:00 AM - 12:00AM</p>
+                    <p>Sat</p>
+                    <p>10:00 AM - 12:00AM</p>
+
+                </div>
+            </div>
+
+            <!--Category: Reviews-->
+            <div class="catWrapper" id="reviews">
+                <p>Reviews</p>
+                <!--Wrapper for Reviews-->
+                <div class="revWrapper">
+                    <!--Wrapper for reviewer's profile-->
+                    <div class="revProfile">
+                        <button type="button">
+                            <span class="material-icons">
+                                account_circle
+                                </span>
+                        </button>
+                        <p>Alice</p>
+                    </div>
+                    <!--Wrapper for rating in stars-->
+                    <div class="rating">
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <p class="numReview">10/2/2021</p>
+                    </div>
+                    <p class="review">
+                        I love this arcade!
+                    </p>
+                </div>
+
+                <div class="revWrapper">
+                    <div class="revProfile">
+                        <button type="button">
+                            <span class="material-icons">
+                                account_circle
+                                </span>
+                        </button>
+                        <p>Bob</p>
+                    </div>
+                    <div class="rating">
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star
+                        </span>
+                        <span class="material-icons">
+                            star_border
+                        </span>
+                        <p class="numReview">10/2/2021</p>
+                    </div>
+                    <p class="review">
+                        Great arcade and amazing selection of games.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

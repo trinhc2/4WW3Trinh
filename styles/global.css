@@ -1,0 +1,57 @@
+body {
+    /*setting the font */
+    font-family: 'Roboto';
+    margin: 0;
+}
+
+header {
+    background-color: coral;
+    /* aligning the contents in the header*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home {
+    /*CSS for home button*/
+    margin-left: 10px;
+}
+
+a {
+    /*removing default css for <a> tag and making font color black*/
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    /*on hover the text has an underline*/
+    text-decoration: underline
+}
+button {
+    /* Making all cursors turn into a pointer when hovering a button */
+    cursor: pointer;
+}
+
+.user button {
+    background: coral;
+    /*rounded borders*/
+    border-radius: 5px;
+    /*button dimensions*/
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    /*adjusting position*/
+}
+
+.user button:hover {
+    /*changing the button background to a darker shade when hovered*/
+    background: rgb(221, 111, 71);
+}
+
+footer {
+    background-color: darkslategray;
+    display: grid;
+    grid-template-columns: 25% 25%;
+    justify-content: center;
+    grid-gap: 50px;
+}

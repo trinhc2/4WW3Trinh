@@ -1,0 +1,124 @@
+.objWrapper {
+    /*wrapper for object page*/
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.objMain {
+    /*wrapper for the main content (image and name)*/
+    /*center the items*/
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /*10px off top margin*/
+    margin: 10px 0px;
+}
+
+.objMain img {
+    /*making image auto adjust with max and min widths*/
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    min-width: 300px;
+    margin-left: 20px;
+}
+
+.objDesc {
+    /*wrapper for place description*/
+    border: solid 1px rgba(222, 222, 222, 0.639);
+    width: 300px;
+    height:fit-content;
+    /*words break onto next lien if they are too long*/
+    overflow-wrap: break-word;
+}
+
+.hours{
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.name {
+    /*making the name of the place stand out*/
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.rating {
+    /*wrapper for rating + number of reviews*/
+    display: flex;
+    align-items: center;
+}
+
+.numReview {
+    margin: 0px 0px 0px 5px;
+}
+
+.catWrapper {
+    /*wrapper for categories describing the place*/
+    border-top:  solid 1px rgba(222, 222, 222, 0.639);
+    margin-top: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.catWrapper img {
+    /*making image auto adjust with max and min widths*/
+    display: inline;
+    height: auto;
+    width: auto;
+    max-width: 40%;
+    min-width: 300px;
+    float:left;
+}
+
+.dateGrid {
+    /*A grid to display the open/closing times on each day*/
+    display: grid;
+    grid-template-columns: 50px 150px;
+    grid-column-gap: 30px;
+    float:left;
+    margin-left: 40px;
+    margin-top: 0px;
+}
+
+.dateGrid p {
+    /*margins for grid items*/
+    margin-block-end: 5px;
+    margin-block-start: 5px;
+}
+
+.revWrapper {
+    /*Wrapper for individual review*/
+    display: block;
+    margin-bottom: 30px;
+}
+
+.revProfile {
+    display: inline-block;
+}
+
+.revProfile button {
+    /*creating the profile icon for reviewer, white bg, rounded border*/
+    background: white;
+    border-radius: 5px;
+    height: 48px;
+    width: 56px;
+    display: inline;
+    float:left
+}
+
+.revProfile p {
+    /*making the Name of the reviewer next to the profile icon*/
+    display: inline;
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+.review {
+    /*making review a block element so it is on a new line*/
+    margin: 10px 0;
+    display: block;
+}

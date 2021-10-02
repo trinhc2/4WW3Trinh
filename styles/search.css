@@ -1,0 +1,52 @@
+.mainSearch{
+    /*setting background image behind the search bar*/
+    background-image: url(../assets/arcade2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 250px;
+}
+
+.credits{
+    /*center aligned text, white color, bold font, margin top to add space*/
+    text-align:center;
+    color: white;
+    font-weight: bold;
+    margin-top: 250px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    /*setting font to scale with the screen to a max of size 12*/
+    font-size: min(1.5vw,12px);
+}
+
+form.search {
+    /*centering the search elements*/
+    justify-content: center;
+    display: flex;
+    
+}
+form input[type=text] {
+    background: #f1f1f1;
+    font-size: 18px;
+    padding: 8px;
+    float:left;
+    /*width is 50% of screen to a max of 600px*/
+    width: 50%;
+    max-width: 600px;
+    /*rounded black borders*/
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid black;
+}
+
+form.search button {
+    background: salmon;
+    padding: 6px;
+    float:left;
+    display:block; 
+    /*rounded black borders*/
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid black;
+}
+
+/* from notes*/
+form.search i {
+    margin: auto;
+}
