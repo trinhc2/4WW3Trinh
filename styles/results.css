@@ -1,0 +1,73 @@
+.resultsWrapper {
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+}
+
+header {
+    /*making the header fixed shrunk, so make width 100%*/
+    position: fixed; 
+    width: 100%; 
+    /*map would overlap header so we make header on top*/
+    z-index: 2;
+}
+.resultsMain {
+    display:flex;
+    flex-direction: column;
+}
+
+.map {
+    display: flex;
+}
+
+.map img{
+    /*map takes up 25% and is fixed. the map covers the amount of space without stretching*/
+    max-width: 25%;
+    height: 100%;
+    position:fixed;
+    object-fit: cover;
+}
+
+.object {
+    /*wrapper for each object*/
+    display: flex;
+    border: solid 1px rgba(222, 222, 222, 0.639);
+    padding: 30px;
+    min-width: 400px;
+}
+
+.object img {
+    /*height/width of images are 200px*/
+    min-height: 200px;
+    min-width: 200px;
+    height:200px;
+    width: 200px;
+}
+
+.objectDesc {
+    /*10px on left margin, aligning contents to the top of the div*/
+    margin: 0 0 0 10px;
+    vertical-align: top;
+    overflow-wrap: break-word;
+}
+
+.object h1 {
+    /*removing default margins*/
+    margin-block-end: 0;
+    margin-block-start: 0;
+
+}
+
+.rating {
+    /*wrapper for rating + number of reviews*/
+    display: flex;
+    align-items: center;
+}
+
+.numReview {
+    margin: 0px 0px 0px 5px;
+}
+
+.objectDesc p {
+    color: grey;
+}

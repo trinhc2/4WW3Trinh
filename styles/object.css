@@ -21,6 +21,7 @@
     max-width: 50%;
     min-width: 300px;
     margin-left: 20px;
+    max-height: 500px;
 }
 
 .objDesc {
@@ -72,6 +73,7 @@
     max-width: 40%;
     min-width: 300px;
     float:left;
+    margin-bottom: 20px;
 }
 
 .dateGrid {
