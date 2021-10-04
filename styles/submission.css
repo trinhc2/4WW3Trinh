@@ -1,0 +1,68 @@
+.subGrid {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10%;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+.subGrid input{
+    width: 100%;
+    padding: 5px;
+}
+
+.subGrid p {
+    /*removing default margins on p tag*/
+    margin: 0;
+}
+
+.subGrid textarea {
+    padding: 5px;
+    width: 100%;
+    min-height: 100px;
+    
+}
+.whole {
+    /*spans 4 columns*/
+    grid-column: auto / span 4;
+}
+.half{
+    /*spans 2 columns*/
+    grid-column: auto / span 2;
+}
+
+.fourth {
+    /*spans 1 column1*/
+    grid-column: auto / span 1;
+}
+
+.cancel {
+    background: white;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.cancel:hover {
+    background: salmon;
+}
+
+.submit {
+    /* rounded borders, colored background, height width modified, black border */
+    border-radius: 5px;
+    background: salmon;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.submit:hover {
+    background: white
+}
+
+.subGrid input[type=file] {
+    font-weight: bold;
+    padding: 5px 0px 0px 0px;
+}

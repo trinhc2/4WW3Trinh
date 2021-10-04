@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: coral;
+    background-color:whitesmoke;
     /* aligning the contents in the header*/
     display: flex;
     justify-content: space-between;
@@ -33,7 +33,7 @@ button {
 }
 
 .user button {
-    background: coral;
+    background: crimson;
     /*rounded borders*/
     border-radius: 5px;
     /*button dimensions*/
@@ -49,7 +49,7 @@ button {
 }
 
 footer {
-    background-color: darkslategray;
+    background-color: whitesmoke;
     display: grid;
     grid-template-columns: 25% 25%;
     justify-content: center;
