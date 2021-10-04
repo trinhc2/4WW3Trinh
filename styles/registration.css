@@ -4,6 +4,7 @@
     grid-template-columns: 10% 10% 10% 10%;
     grid-gap: 20px;
     justify-content: center;
+    padding: 30px 0px;
 }
 
 .registerGrid input {
@@ -12,7 +13,7 @@
     padding: 5px;
 }
 
-.registerGrid p {
+.registerGrid p,h1 {
     /*removing default margins on p tag*/
     margin: 0;
 }
@@ -20,7 +21,7 @@
 .submit {
     /* rounded borders, colored background, height width modified, black border */
     border-radius: 5px;
-    background: salmon;
+    background: crimson;
     width: 100%;
     height: 40px;
     border: 1px solid black;
@@ -28,7 +29,7 @@
 }
 
 .submit:hover {
-    background: white
+    background: rgb(214, 85, 109);
 }
 
 .cancel {
@@ -41,7 +42,7 @@
 }
 
 .cancel:hover {
-    background: salmon;
+    background: rgb(214, 85, 109);;
 }
 
 .whole {

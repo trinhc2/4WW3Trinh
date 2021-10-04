@@ -10,6 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
 }
 
 .home {
@@ -32,8 +33,7 @@ button {
     cursor: pointer;
 }
 
-.user button {
-    background: crimson;
+.user {
     /*rounded borders*/
     border-radius: 5px;
     /*button dimensions*/
@@ -43,9 +43,43 @@ button {
     /*adjusting position*/
 }
 
-.user button:hover {
+.user:hover {
     /*changing the button background to a darker shade when hovered*/
-    background: rgb(221, 111, 71);
+    background: rgb(214, 85, 109);
+}
+
+.login {
+    background: crimson;
+    border: none;
+}
+
+.signup {
+    background: whitesmoke;border: 1px solid crimson; margin-right: 10px;
+}
+
+form input[type=text] {
+    background: whitesmoke;
+    font-size: 18px;
+    float:left;
+    padding: 6px;
+    /*width is 50% of screen to a max of 600px*/
+    width: 50%;
+    max-width: 600px;
+    min-width: 300px;
+    height: 28px;
+    /*rounded black borders*/
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid black;
+}
+
+form.search button {
+    background: crimson;
+    padding: 6px;
+    float:left;
+    display:block; 
+    /*rounded black borders*/
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid black;
 }
 
 footer {
@@ -54,4 +88,6 @@ footer {
     grid-template-columns: 25% 25%;
     justify-content: center;
     grid-gap: 50px;
+    padding: 30px 0px;
+    width: 100%;
 }

@@ -8,13 +8,13 @@
 
 .credits{
     /*center aligned text, white color, bold font, margin top to add space*/
-    text-align:center;
     color: white;
     font-weight: bold;
     margin-top: 250px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     /*setting font to scale with the screen to a max of size 12*/
-    font-size: min(1.5vw,12px);
+    display: flex;
+    justify-content: center;
 }
 
 form.search {
@@ -24,7 +24,7 @@ form.search {
     
 }
 form input[type=text] {
-    background: #f1f1f1;
+    background: whitesmoke;
     font-size: 18px;
     padding: 8px;
     float:left;
@@ -37,13 +37,17 @@ form input[type=text] {
 }
 
 form.search button {
-    background: salmon;
+    background: crimson;
     padding: 6px;
     float:left;
     display:block; 
     /*rounded black borders*/
     border-radius: 0px 5px 5px 0px;
     border: 1px solid black;
+}
+
+form.search button:hover {
+    background: rgb(214, 85, 109);
 }
 
 /* from notes*/

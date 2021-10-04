@@ -10,21 +10,26 @@
     </head>
     <body>
         <header>
-            <!--menu items-->
             <a href="search.html">
                 <h1 class="home">Home</h1>
             </a>
-            <a href="submission.html">
-                <h1> Submit A Review</h1>
-            </a>
-            
+            <form class="search">
+                <input type="text" placeholder="Find an arcade...">
+                <button type="submit">
+                    <!-- icon within the button-->
+                    <span class="material-icons">
+                        search
+                    </span>
+                </button>
+            </form>
+
             <!--bundling the buttons used for user auth-->
-            <div class="user">
-                <button style ="border: none;" class="user" type="button">
+            <div>
+                <button class="user login" type="button">
                     Log In
                 </button>
                 <a href="registration.html">
-                    <button style ="border: 1px solid black; margin-right: 10px;"class="user" type="button">
+                    <button class="user signup" type="button">
                         Sign Up
                     </button>
                 </a>
