@@ -8,14 +8,16 @@ header {
     background-color:whitesmoke;
     /* aligning the contents in the header*/
     display: flex;
+    /*content is spaced based on the space between each element*/
     justify-content: space-between;
+    /*elements vertically aligned center*/
     align-items: center;
     height: 80px;
 }
 
 .home {
     /*CSS for home button*/
-    margin-left: 10px;
+    padding: 0px 10px;
 }
 
 a {
@@ -49,15 +51,20 @@ button {
 }
 
 .login {
+    /*button with crimson background and no border*/
     background: crimson;
     border: none;
 }
 
 .signup {
-    background: whitesmoke;border: 1px solid crimson; margin-right: 10px;
+    /*button with white background, crimson border and 10px offset to the right*/
+    background: whitesmoke;
+    border: 1px solid crimson; 
+    margin-right: 10px;
 }
 
 form input[type=text] {
+    /*text input with white background*/
     background: whitesmoke;
     font-size: 18px;
     float:left;
@@ -73,6 +80,7 @@ form input[type=text] {
 }
 
 form.search button {
+    /*crimson background that floats to the left, rounded borders top right, bottom right*/
     background: crimson;
     padding: 6px;
     float:left;
@@ -82,10 +90,17 @@ form.search button {
     border: 1px solid black;
 }
 
+form.search button:hover {
+    background: rgb(214, 85, 109);
+}
+
 footer {
+    /*white background footer with display as a grid*/
     background-color: whitesmoke;
     display: grid;
+    /*2 columns 50% of screen total*/
     grid-template-columns: 25% 25%;
+    /*centering objects*/
     justify-content: center;
     grid-gap: 50px;
     padding: 30px 0px;

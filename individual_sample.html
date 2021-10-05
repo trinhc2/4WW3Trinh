@@ -25,9 +25,11 @@
 
             <!--bundling the buttons used for user auth-->
             <div>
+                <!--Login button-->
                 <button class="user login" type="button">
                     Log In
                 </button>
+                <!--Sign up button-->
                 <a href="registration.html">
                     <button class="user signup" type="button">
                         Sign Up
@@ -35,128 +37,163 @@
                 </a>
             </div>
         </header>
-        <div class="objWrapper">
-            <div class="objMain">
-                <div class="objDesc">
-                    <p class="name">Mikado Game Center</p>
-                    <div class="rating">
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star_half
-                        </span>
-                        <!--user can click on reviews to jump to review section-->
-                        <a href="#reviews">
-                            <p class="numReview">2 Reviews</p>
-                        </a>
-                    </div>
-                    <p class="hours">Open</p>
-                    <p class="hours">10:00 AM - 12:00AM</p>
-                </div>
-                <img src="assets/mikado.jpg">
-            </div>
-
-            <!--Category: Location and Hours-->
-            <div class = "catWrapper">
-                <p>Location and Hours</p>
-                <img src="assets/mikadomap.png">
-                <div class="dateGrid">
-                    <p style="margin-block-start: 0px;">Sun</p>
-                    <p style="margin-block-start: 0px;">10:00 AM - 12:00AM</p>
-                    <p>Mon</p>
-                    <p>10:00 AM - 12:00AM</p>
-                    <p>Tue</p>
-                    <p>10:00 AM - 12:00AM</p>
-                    <p>Wed</p>
-                    <p>10:00 AM - 12:00AM</p>
-                    <p>Thu</p>
-                    <p>10:00 AM - 12:00AM</p>
-                    <p>Fri</p>
-                    <p>10:00 AM - 12:00AM</p>
-                    <p>Sat</p>
-                    <p>10:00 AM - 12:00AM</p>
-
+        <div>
+            <!--Sidebar-->
+            <div class="sidebar">
+                <div class="sidebarWrapper">
+                    <h3>Address</h3>
+                    <p>4 Chome-5-10 Takadanobaba, Shinjuku City, Tokyo 169-0075, Japan</p>
+                    <h3>Phone</h3>
+                    <p>+81 3-5386-0127</p>
                 </div>
             </div>
-
-            <!--Category: Reviews-->
-            <div class="catWrapper" id="reviews">
-                <p>Reviews</p>
-                <!--Wrapper for Reviews-->
-                <div class="revWrapper">
-                    <!--Wrapper for reviewer's profile-->
-                    <div class="revProfile">
-                        <button type="button">
+            <!--Wrapper for object page-->
+            <div class="objWrapper">
+                <!--Wrapper for the main details about object-->
+                <div class="objMain">
+                    <!--wrapper for the main description part of the object-->
+                    <div class="objDesc">
+                        <p class="name">Mikado Game Center</p>
+                        <!--star ratings-->
+                        <div class="rating">
                             <span class="material-icons">
-                                account_circle
-                                </span>
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star_half
+                            </span>
+                            <!--user can click on reviews to jump to review section-->
+                            <a href="#reviews">
+                                <p class="numReview" style="color: crimson; font-weight: bold;">2 Reviews</p>
+                            </a>
+                        </div>
+                        <!--Hours-->
+                        <p class="hours">Open</p>
+                        <p class="hours">10:00 AM - 12:00AM</p>
+                        <!--Button to write a review-->
+                        <button class="reviewButton" type="button">
+                            <span class="material-icons">
+                                rate_review
+                            </span>
+                            <p style="margin-left: 10px;">Write a Review</p>
                         </button>
-                        <p>Alice</p>
                     </div>
-                    <!--Wrapper for rating in stars-->
-                    <div class="rating">
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <p class="numReview">10/2/2021</p>
-                    </div>
-                    <p class="review">
-                        I love this arcade!
-                    </p>
+                    <!--Image of the object-->
+                    <img src="assets/mikado.jpg">
                 </div>
 
-                <div class="revWrapper">
-                    <div class="revProfile">
-                        <button type="button">
+                <!--Wrapper for Description-->
+                <div class="catWrapper">
+                    <h1>Description</h1>
+                    <div>
+                        <p class="description">One of the most famous arcades in Japan. This arcade has been around for a long time
+                            and is very popular amongst fighting game players. While being popular with fans of 
+                            fighting games, there are plenty of genres of arcade games here for your entertainment.
+                        </p>
+                    </div>
+                </div>
+
+                <!--Category: Location and Hours-->
+                <div class="catWrapper">
+                    <h1>Location and Hours</h1>
+                    <img src="assets/mikadomap.png">
+                    <div class="dateGrid">
+                        <p style="margin-block-start: 0px;">Sun</p>
+                        <p style="margin-block-start: 0px;">10:00 AM - 12:00AM</p>
+                        <p>Mon</p>
+                        <p>10:00 AM - 12:00AM</p>
+                        <p>Tue</p>
+                        <p>10:00 AM - 12:00AM</p>
+                        <p>Wed</p>
+                        <p>10:00 AM - 12:00AM</p>
+                        <p>Thu</p>
+                        <p>10:00 AM - 12:00AM</p>
+                        <p>Fri</p>
+                        <p>10:00 AM - 12:00AM</p>
+                        <p>Sat</p>
+                        <p>10:00 AM - 12:00AM</p>
+
+                    </div>
+                </div>
+
+                <!--Category: Reviews-->
+                <div class="catWrapper" id="reviews">
+                    <h1>Reviews</h1>
+                    <!--Wrapper for Reviews-->
+                    <div class="revWrapper">
+                        <!--Wrapper for reviewer's profile-->
+                        <div class="revProfile">
+                            <button type="button">
+                                <span class="material-icons">
+                                    account_circle
+                                    </span>
+                            </button>
+                            <p>Alice</p>
+                        </div>
+                        <!--Wrapper for rating in stars-->
+                        <div class="rating">
                             <span class="material-icons">
-                                account_circle
-                                </span>
-                        </button>
-                        <p>Bob</p>
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <p class="numReview">10/2/2021</p>
+                        </div>
+                        <p class="review">
+                            I love this arcade!
+                        </p>
                     </div>
-                    <div class="rating">
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star
-                        </span>
-                        <span class="material-icons">
-                            star_border
-                        </span>
-                        <p class="numReview">10/2/2021</p>
+
+                    <div class="revWrapper">
+                        <div class="revProfile">
+                            <button type="button">
+                                <span class="material-icons">
+                                    account_circle
+                                    </span>
+                            </button>
+                            <p>Bob</p>
+                        </div>
+                        <div class="rating">
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star_border
+                            </span>
+                            <p class="numReview">10/2/2021</p>
+                        </div>
+                        <p class="review">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        </p>
                     </div>
-                    <p class="review">
-                        Great arcade and amazing selection of games.
-                    </p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 .subGrid {
+    /*Wrapper for the submission form is a grid with 4 columns centered in the screen*/
     display: grid;
     grid-template-columns: 10% 10% 10% 10%;
     grid-gap: 20px;
@@ -37,7 +38,8 @@
 }
 
 .cancel {
-    background: white;
+    /*cancel button with white background rounded black borders and bold font*/
+    background: whitesmoke;
     width: 100%;
     height: 40px;
     border: 1px solid black;

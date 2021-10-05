@@ -1,6 +1,8 @@
 .resultsWrapper {
+    /*Wrapper for results page is a grid*/
     display: grid;
-    grid-template-columns: 75% 25%;
+    /*left side of grid is the results, right side is the map*/
+    grid-template-columns: 65% 35%;
     padding-top: 80px;
 }
 
@@ -11,13 +13,16 @@ header {
 }
 
 .resultsMain {
+    /*putting the results in a flex box that flows in a column*/
     display:flex;
     flex-direction: column;
 }
 
 .topText {
+    /*Text shown before the results*/
     margin-left: 30px;
     padding: 10px 0;
+    /*objects vertically aligned center*/
     display: flex;
     align-items: center;
 }
@@ -39,8 +44,7 @@ header {
 }
 
 .map img{
-    /*map takes up 25% and is fixed. the map covers the amount of space without stretching*/
-    max-width: 25%;
+    /*the map covers the amount of space without stretching*/
     height: 100%;
     position:fixed;
     object-fit: cover;

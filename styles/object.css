@@ -1,7 +1,12 @@
+p {
+    font-size: 100%;
+}
 .objWrapper {
     /*wrapper for object page*/
+    display: flex;
+    flex-direction: column;
     margin-left: 150px;
-    margin-right: 150px;
+    margin-right: 400px;
 }
 
 .objMain {
@@ -11,7 +16,7 @@
     justify-content: center;
     align-items: center;
     /*10px off top margin*/
-    margin: 10px 0px;
+    margin: 20px 0px;
 }
 
 .objMain img {
@@ -21,7 +26,7 @@
     max-width: 50%;
     min-width: 300px;
     margin-left: 20px;
-    max-height: 500px;
+    max-height: 450px;
     border-radius: 3px;
 }
 
@@ -34,6 +39,11 @@
     height:fit-content;
     /*words break onto next lien if they are too long*/
     overflow-wrap: break-word;
+}
+
+.description {
+    margin: 0px;
+    max-width: 700px;
 }
 
 .hours{
@@ -61,7 +71,7 @@
 
 .catWrapper {
     /*wrapper for categories describing the place*/
-    border-top:  solid 2px rgb(214, 85, 109);;
+    border-top:  solid 2px rgb(214, 85, 109);
     margin-top: 30px;
     display: inline-block;
     margin-bottom: 30px;
@@ -78,6 +88,10 @@
     float:left;
     margin-bottom: 20px;
     border-radius: 3px;
+}
+
+.catWrapper h1 {
+    margin: 10px 0px;
 }
 
 .dateGrid {
@@ -127,4 +141,39 @@
     /*making review a block element so it is on a new line*/
     margin: 10px 0;
     display: block;
+    max-width: 700px;
+}
+
+.reviewButton {
+    /*Button to review with crimson background with objects within centered vertically and horizontally*/
+    background-color: crimson;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    border: 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewButton:hover {
+    background: rgb(214, 85, 109);
+}
+
+.sidebar {
+    /*side bar taking up 100% height 100px from the right, 81 px from the top*/
+    right: 100px;
+    height: 100%;
+    top: 81px;
+    position: fixed;
+
+}
+
+.sidebarWrapper {
+    /*Wrapper for the sidebar with rounded red border*/
+    border: solid 2px rgb(214, 85, 109);;
+    width: 200px;
+    padding: 10px;
+    border-radius: 2px;
 }

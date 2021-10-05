@@ -49,8 +49,3 @@ form.search button {
 form.search button:hover {
     background: rgb(214, 85, 109);
 }
-
-/* from notes*/
-form.search i {
-    margin: auto;
-}
