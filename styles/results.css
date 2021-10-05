@@ -16,6 +16,7 @@ header {
     /*putting the results in a flex box that flows in a column*/
     display:flex;
     flex-direction: column;
+    grid-column: 1/1;
 }
 
 .topText {
@@ -41,6 +42,7 @@ header {
 
 .map {
     display: flex;
+    grid-column: 2 / 2;
 }
 
 .map img{
@@ -55,7 +57,6 @@ header {
     display: flex;
     border-top: solid 2px rgb(214, 85, 109);
     padding: 30px;
-    min-width: 400px;
 }
 
 .object img {
@@ -72,6 +73,7 @@ header {
     margin: 0 0 0 10px;
     vertical-align: top;
     overflow-wrap: break-word;
+    
 }
 
 .object h1 {
@@ -93,4 +95,70 @@ header {
 
 .objectDesc p {
     color: grey;
+    text-overflow: ellipsis;
+    max-width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+@media screen and (max-width:1000px){
+    .objectDesc p {
+        max-width: 400px;
+    }
+
+    .resultsWrapper {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0px;
+    }
+
+    .map img {
+        position: relative;
+        height: 300px;
+    }
+
+    .map {
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    header {
+        position: relative;
+    }
+}
+
+@media screen and (max-width:400px) {
+    
+
+    .objectDesc p{
+        max-width: 200px;
+    }
+    .object img {
+        min-height: 150px;
+        min-width: 150px;
+        height:150px;
+        width: 150px;
+        border-radius: 3px;
+    }
+    .map img {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .numReview {
+        display: block;
+    }
+
+    .object {
+        padding: 30px 10px;
+    }
+
+    .topText {
+        margin-left: 0px;
+        justify-content: center;
+    }
 }

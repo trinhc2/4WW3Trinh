@@ -59,3 +59,10 @@
     /*spans 1 column1*/
     grid-column: auto / span 1;
 }
+
+@media screen and (max-width:400px) {
+    
+    .fourth{
+        grid-column: auto / span 2 !important;
+    }
+}

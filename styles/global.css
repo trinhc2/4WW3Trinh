@@ -106,3 +106,18 @@ footer {
     padding: 30px 0px;
     width: 100%;
 }
+
+@media screen and (max-width:700px) {
+    form input[type=text]{
+        min-width: 100px;
+    }
+
+    .user {
+        width: 70px;
+    }
+
+    footer {
+        grid-gap: 10px;
+        grid-template-columns: 40% 40%;
+    }
+}

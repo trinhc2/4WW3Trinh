@@ -69,3 +69,14 @@
     font-weight: bold;
     padding: 5px 0px 0px 0px;
 }
+
+@media screen and (max-width:700px) {
+    
+    .fourth{
+        grid-column: auto / span 2 !important;
+    }
+
+    .fourth p {
+        width: 90px;
+    }
+}

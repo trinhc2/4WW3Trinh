@@ -165,7 +165,7 @@ p {
     /*side bar taking up 100% height 100px from the right, 81 px from the top*/
     right: 100px;
     height: 100%;
-    top: 81px;
+    top: 120px;
     position: fixed;
 
 }
@@ -176,4 +176,62 @@ p {
     width: 200px;
     padding: 10px;
     border-radius: 2px;
+}
+
+@media screen and (max-width:1000px) {
+    
+    .objWrapper {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .sidebar{
+        display: inline;
+        right: 0px;
+        height: auto;
+        top: 0px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar {
+        display: flex;
+        position: relative;
+        justify-content: center;
+    }
+
+    .catWrapper{
+        margin: 10px 0px;
+    }
+
+}
+
+@media screen and (max-width:560px) {
+    
+    .objMain{
+        flex-direction: column;
+    }
+
+    .objMain img {
+        /*making image auto adjust with max and min widths*/
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .dateGrid {
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .catWrapper img {
+        /*making image auto adjust with max and min widths*/
+        min-width: 250px;
+    }
+
+}
+
+@media screen and (max-height: 400px) {
+    .catWrapper img {
+        /*making image auto adjust with max and min widths*/
+        min-width: 220px;
+    }
+    
 }
