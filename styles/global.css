@@ -15,6 +15,52 @@ header {
     height: 80px;
 }
 
+
+.navmobile {
+    display: none;
+}
+
+.nav {
+    display: flex;
+}
+
+.dropdownbtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0px 10px;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background: whitesmoke;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 80px;
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+.dropdownContent p {
+    padding: 10px;
+    margin: 0px;
+}
+
+.dropdownContent p:hover {
+    background: rgb(214, 85, 109);
+    cursor: pointer;
+}
+.dropdownContent a:hover {
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdownbtn {
+    background: rgb(214, 85, 109);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
 .home {
     /*CSS for home button*/
     padding: 0px 10px;
@@ -107,17 +153,36 @@ footer {
     width: 100%;
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:780px) {
     form input[type=text]{
-        min-width: 100px;
+        min-width: 180px;
     }
 
     .user {
         width: 70px;
+        margin-left: 10px;
     }
 
     footer {
         grid-gap: 10px;
         grid-template-columns: 40% 40%;
+    }
+}
+
+@media screen and (max-width:630px) {
+    form input[type=text]{
+        min-width: 100px;
+    }
+
+    .navmobile {
+        display: flex;
+    }
+
+    .navmobile h1 {
+        font-size: 20px;
+    }
+
+    .nav {
+        display: none;
     }
 }
