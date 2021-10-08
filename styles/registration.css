@@ -13,7 +13,7 @@
     padding: 5px;
 }
 
-.registerGrid p,h1 {
+.title {
     /*removing default margins on p tag*/
     margin: 0;
 }
