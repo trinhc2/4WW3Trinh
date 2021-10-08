@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <link rel="stylesheet" href="styles/search.css">
         <link rel="stylesheet" href="styles/global.css">
@@ -7,6 +7,7 @@
         rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
         <title>Arcades!</title>
     </head>
     <body>
@@ -74,15 +75,17 @@
             <!--bundling the buttons used for user auth-->
             <div>
                 <!--Login button-->
-                <button class="user login" type="button">
-                    Log In
-                </button>
+                <form action="registration.html" method="get">
+                    <button class="user login" type="button">
+                        Log In
+                    </button>
+                </form>
                 <!--Sign up button-->
-                <a href="registration.html">
+                <form action="registration.html" method="get">
                     <button class="user signup" type="button">
                         Sign Up
                     </button>
-                </a>
+                </form>
             </div>
         </header>
         <div class="mainSearch">

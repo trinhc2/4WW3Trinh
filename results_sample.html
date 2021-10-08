@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <link rel="stylesheet" href="styles/results.css">
         <link rel="stylesheet" href="styles/global.css">
@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
         <title>Results</title>
     </head>
     <body>
@@ -81,14 +82,18 @@
 
             <!--bundling the buttons used for user auth-->
             <div>
-                <button class="user login" type="button">
-                    Log In
-                </button>
-                <a href="registration.html">
+                <!--Login button-->
+                <form action="registration.html" method="get">
+                    <button class="user login" type="button">
+                        Log In
+                    </button>
+                </form>
+                <!--Sign up button-->
+                <form action="registration.html" method="get">
                     <button class="user signup" type="button">
                         Sign Up
                     </button>
-                </a>
+                </form>
             </div>
         </header>
         <!--Wrapper for page contents-->
