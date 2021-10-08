@@ -185,17 +185,14 @@ p {
         margin-right: 50px;
     }
     .sidebar{
-        display: inline;
+        /*turning sidebar from fixed to an relative elemnt*/
+        display: flex;
+        position: relative;
+        justify-content: center;
         right: 0px;
         height: auto;
         top: 0px;
         margin-bottom: 10px;
-    }
-
-    .sidebar {
-        display: flex;
-        position: relative;
-        justify-content: center;
     }
 
     .catWrapper{

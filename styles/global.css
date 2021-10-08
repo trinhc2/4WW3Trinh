@@ -17,14 +17,17 @@ header {
 
 
 .navmobile {
+    /*navigation bar for mobile by default is toggled to not be displayed*/
     display: none;
 }
 
 .nav {
+    /*navigation bar for desktop is displayed initially*/
     display: flex;
 }
 
 .dropdownbtn {
+    /*Button for dropdown menu is vertically aligned center and turns cursor to pointer*/
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -32,15 +35,20 @@ header {
 }
 
 .dropdownContent {
+    /*Content in dropdown menu is not displayed initially*/
     display: none;
+    /*position is the same in the webpage*/
     position: absolute;
+    /*appears infront of other elements*/
     z-index: 1;
+    /*styling*/
     background: whitesmoke;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     top: 80px;
 }
 
 .dropdown:hover .dropdownContent {
+    /*when dropdown menu is hovered, content is displayed*/
     display: block;
 }
 
@@ -50,6 +58,7 @@ header {
 }
 
 .dropdownContent p:hover {
+    /*when you hover on content the background changes and cursor changes*/
     background: rgb(214, 85, 109);
     cursor: pointer;
 }
@@ -58,6 +67,7 @@ header {
 }
 
 .dropdown:hover .dropdownbtn {
+    /*when you hover over dropdown button the background changes*/
     background: rgb(214, 85, 109);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -175,6 +185,7 @@ footer {
     }
 
     .navmobile {
+        /*swapping navbars*/
         display: flex;
     }
 
@@ -183,6 +194,7 @@ footer {
     }
 
     .nav {
+        /*Swapping nav bars*/
         display: none;
     }
 }
