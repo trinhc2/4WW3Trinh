@@ -47,7 +47,7 @@ header {
     top: 80px;
 }
 
-.dropdown:hover .dropdownContent {
+.dropdown:hover .dropdownContent, .dropdown:active .dropdownContent {
     /*when dropdown menu is hovered, content is displayed*/
     display: block;
 }
@@ -119,7 +119,7 @@ button {
     margin-right: 10px;
 }
 
-form input[type=text] {
+form.search input[type=text] {
     /*text input with white background*/
     background: whitesmoke;
     font-size: 18px;
@@ -164,7 +164,7 @@ footer {
 }
 
 @media screen and (max-width:780px) {
-    form input[type=text]{
+    form.search input[type=text]{
         min-width: 180px;
     }
 
@@ -180,7 +180,7 @@ footer {
 }
 
 @media screen and (max-width:630px) {
-    form input[type=text]{
+    form.search input[type=text]{
         min-width: 100px;
     }
 

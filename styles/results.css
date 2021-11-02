@@ -3,12 +3,11 @@
     display: grid;
     /*left side of grid is the results, right side is the map*/
     grid-template-columns: 65% 35%;
-    padding-top: 80px;
 }
 
 header {
     /*making the header fixed shrunk, so make width 100%*/
-    position: fixed; 
+    position: relative; 
     width: 100%; 
 }
 
@@ -40,9 +39,11 @@ header {
     text-decoration: underline;
 }
 
-.map {
+#map {
     display: flex;
     grid-column: 2 / 2;
+    grid-row: 1/1;
+    height: 100%;
 }
 
 .map img{
@@ -102,6 +103,10 @@ header {
     overflow: hidden;
 }
 
+.leaflet-popup-content-wrapper a {
+    color: crimson;
+}
+
 @media screen and (max-width:1000px){
     .objectDesc p {
         /*making review max width smaller*/
@@ -115,13 +120,10 @@ header {
         padding-top: 0px;
     }
 
-    .map img {
+    #map{
         /*changing the map to be relative instead of fixed*/
         position: relative;
         height: 300px;
-    }
-
-    .map {
         justify-content: center;
         padding-top: 10px;
     }
@@ -146,7 +148,7 @@ header {
         width: 150px;
         border-radius: 3px;
     }
-    .map img {
+    #map {
         position: relative;
         width: 100%;
         height: auto;
