@@ -54,3 +54,9 @@ https://github.com/pointhi/leaflet-color-markers
 
 leaflet marker css
 https://stackoverflow.com/questions/20532635/how-can-i-change-the-background-color-of-a-leaflet-popup
+
+phone number regex
+https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number
+
+geolocation api
+https://www.w3schools.com/html/html5_geolocation.asp

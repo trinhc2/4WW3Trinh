@@ -47,6 +47,15 @@
     border-radius: 5px;
 }
 
+.geoButton {
+    margin-top: 3px;
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 4px 4px;
+    font-size: 12px;
+}
+
 .cancel:hover {
     background: rgb(214, 85, 109);;
 }
