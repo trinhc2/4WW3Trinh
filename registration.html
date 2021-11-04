@@ -10,6 +10,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Registration page containing forms for users to enter information required to sign up for an account.">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
+        <script type="text/javascript" src="js/registration.js"></script>
     </head>
 
     <body>
@@ -118,45 +119,51 @@
             </div>
         </header>
         <!--Form for registering-->
-        <div class="registerGrid">
-            <h1 class="whole title">Registration</h1>
-            <div class="half">
-                <label for="firstName">First Name</label>
-                <input  type="text" placeholder="First Name" name="firstName">
-            </div>
-            <div class="half">
-                <label for="lastName">Last Name</label>
-                <input  type="text" placeholder="Last Name" name="lastName">
-            </div>
-            <div class="whole">
-                <label for="email">Email</label>
-                <input type="email" placeholder="Email" name="email">
-            </div>
-            <div class="whole">
-                <label for="password">Password</label>
-                <input type="password" placeholder="Password" name="password">
-            </div>
-            <div class="whole">
-                <label for="confirmPass">Confirm Password</label>
-                <input type="password" placeholder="Confirm Password" name="confirmPass">
-            </div>
-            <div class="whole">
-                <label for="date">Date of Birth</label>
-                <input type="date" name="date">
-            </div>
-            <div class="fourth">
-                <button class="submit" type="submit">
-                    Sign Up
-                </button>
-            </div>
-            <div class="fourth">
-                <form style="display: inline;" action="search.html" method="get">
-                    <button class="cancel" type="submit">
-                        Cancel
+        <form class="register" onsubmit="return validate(this)" method="post">
+            <div class="registerGrid">
+                <h1 class="whole title">Registration</h1>
+                <div class="half">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" type="text" name="firstName">
+                    <p id="firstNameValid">Required</p>
+                </div>
+                <div class="half">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" type="text" name="lastName">
+                    <p id="lastNameValid">Required</p>
+                </div>
+                <div class="whole">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email">
+                    <p id="emailValid">Required <br>(Example: abc@domain.com)</p>
+                </div>
+                <div class="whole">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password">
+                    <p id="passwordValid">Required</p>
+                </div>
+                <div class="whole">
+                    <label for="confirmPass">Confirm Password</label>
+                    <input id="confirmPass" type="password" name="confirmPass">
+                    <p id="confirmPassValid">Required</p>
+                </div>
+                <div class="whole">
+                    <label for="date">Date of Birth</label>
+                    <input id="date" type="date" name="date">
+                    <p id="dateValid">Required</p>
+                </div>
+                <div class="fourth">
+                    <button class="submit" type="submit">
+                        Sign Up
                     </button>
-                </form>
+                </div>
+                <div class="fourth">
+                        <button class="cancel" onclick="location.href='search.html'" type="button">
+                            Cancel
+                        </button>
+                </div>
             </div>
-        </div>
+        </form>
         <div style="display: flex;">
             <footer>
                 <div>

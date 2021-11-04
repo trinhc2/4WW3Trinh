@@ -148,11 +148,6 @@ header {
         width: 150px;
         border-radius: 3px;
     }
-    #map {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
 
     h1 {
         font-size: 18px;

@@ -1,0 +1,56 @@
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_search_button
+
+
+https://fonts.google.com/icons
+
+images
+https://www.reddit.com/r/StreetFighter/comments/bz0cgc/sfv_type_arcade_cabinets_at_socal_round_1/
+
+https://freesvg.org/arcade-machine
+
+https://commons.wikimedia.org/wiki/File:Takadanobaba_Game_Center_Mikado_front_2019-02-24.jpg
+
+https://commons.wikimedia.org/wiki/File:Taito_Station_Arcade.jpg
+
+https://commons.wikimedia.org/wiki/File:Club_Sega_Akihabara_1.jpeg
+
+rounded input and button
+https://www.w3schools.com/css/css3_borders.asp
+
+https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+
+column exmaples
+https://gridbyexample.com/examples/example5/
+
+registration columns
+https://stackoverflow.com/questions/63222551/take-half-width-in-3-columns-css-grid-layout
+
+font size scaling
+https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+
+p max length
+https://stackoverflow.com/questions/21447269/how-to-limit-the-length-of-text-in-a-paragraph/21447588
+
+
+https://stackoverflow.com/questions/19572044/changing-html-content-order-depending-on-screen-size
+
+https://www.w3schools.com/css/css_dropdowns.asp
+
+https://primetimeamusements.com/building-arcade-pt-1-types-arcade-games/
+
+https://stackoverflow.com/questions/6393827/can-i-nest-a-button-element-inside-an-a-using-html5
+
+regex
+https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+
+leaflet tutorial
+https://leafletjs.com/examples/quick-start/
+
+leaflet map not loading
+https://stackoverflow.com/questions/36037178/leaflet-loads-incomplete-map
+
+leaflet alt markers
+https://github.com/pointhi/leaflet-color-markers
+
+leaflet marker css
+https://stackoverflow.com/questions/20532635/how-can-i-change-the-background-color-of-a-leaflet-popup
