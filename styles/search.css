@@ -17,37 +17,11 @@
     justify-content: center;
 }
 
-form.search {
+.search {
     /*centering the search elements*/
     justify-content: center;
     display: flex;
     
-}
-form input[type=text] {
-    background: whitesmoke;
-    font-size: 18px;
-    padding: 8px;
-    float:left;
-    /*width is 50% of screen to a max of 600px*/
-    width: 50%;
-    max-width: 600px;
-    /*rounded black borders*/
-    border-radius: 5px 0px 0px 5px;
-    border: 1px solid black;
-}
-
-form.search button {
-    background: crimson;
-    padding: 6px;
-    float:left;
-    display:block; 
-    /*rounded black borders*/
-    border-radius: 0px 5px 5px 0px;
-    border: 1px solid black;
-}
-
-form.search button:hover {
-    background: rgb(214, 85, 109);
 }
 
 .nearYou {
@@ -56,6 +30,7 @@ form.search button:hover {
     font-weight: bold;
     font-size: 35px;
     margin-block: 0px;
+    text-align: center;
 }
 
 .nearYou:hover {

@@ -78,6 +78,9 @@
     font-weight: bold;
     padding: 5px 0px 0px 0px;
 }
+p {
+    margin-block: 0px;
+}
 
 @media screen and (max-width:700px) {
     

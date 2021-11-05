@@ -120,7 +120,7 @@ button {
     margin-right: 10px;
 }
 
-form.search input[type=text] {
+.search input[type=text] {
     /*text input with white background*/
     background: whitesmoke;
     font-size: 18px;
@@ -136,7 +136,7 @@ form.search input[type=text] {
     border: 1px solid black;
 }
 
-form.search button {
+.search button {
     /*crimson background that floats to the left, rounded borders top right, bottom right*/
     background: crimson;
     padding: 6px;
@@ -147,7 +147,7 @@ form.search button {
     border: 1px solid black;
 }
 
-form.search button:hover {
+.search button:hover {
     background: rgb(214, 85, 109);
 }
 
