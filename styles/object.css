@@ -78,13 +78,11 @@ p {
     width: 100%;
 }
 
-.catWrapper img {
+#map {
     /*making image auto adjust with max and min widths*/
     display: inline;
-    height: auto;
-    width: auto;
-    max-width: 40%;
-    min-width: 300px;
+    height: 400px;
+    width: 400px;
     float:left;
     margin-bottom: 20px;
     border-radius: 3px;
@@ -178,6 +176,10 @@ p {
     border-radius: 2px;
 }
 
+.leaflet-popup-content-wrapper a {
+    color: crimson;
+}
+
 @media screen and (max-width:1000px) {
     
     .objWrapper {
@@ -218,17 +220,19 @@ p {
         justify-content: center;
     }
 
-    .catWrapper img {
+    #map{
         /*making image auto adjust with max and min widths*/
-        min-width: 250px;
+        width: 350px;
+        height: 350px;
     }
 
 }
 
-@media screen and (max-height: 400px) {
-    .catWrapper img {
+@media screen and (max-width: 400px) {
+    #map{
         /*making image auto adjust with max and min widths*/
-        min-width: 220px;
+        width: 275px;
+        height: 275px;
     }
     
 }
