@@ -42,7 +42,7 @@ header {
     /*position is the same in the webpage*/
     position: absolute;
     /*appears infront of other elements*/
-    z-index: 1;
+    z-index: 9999;
     /*styling*/
     background: whitesmoke;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
