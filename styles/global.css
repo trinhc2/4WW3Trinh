@@ -165,7 +165,7 @@ footer {
 }
 
 @media screen and (max-width:780px) {
-    form.search input[type=text]{
+    .search input[type=text]{
         min-width: 180px;
     }
 
@@ -181,7 +181,7 @@ footer {
 }
 
 @media screen and (max-width:630px) {
-    form.search input[type=text]{
+    .search input[type=text]{
         min-width: 100px;
     }
 
