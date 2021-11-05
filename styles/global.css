@@ -19,6 +19,7 @@ header {
 .navmobile {
     /*navigation bar for mobile by default is toggled to not be displayed*/
     display: none;
+    height: 80px;
 }
 
 .nav {
@@ -32,6 +33,7 @@ header {
     align-items: center;
     cursor: pointer;
     padding: 0px 10px;
+    height: 80px;
 }
 
 .dropdownContent {

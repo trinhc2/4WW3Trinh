@@ -8,6 +8,7 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+
         <link rel="stylesheet" href="styles/results.css">
         <link rel="stylesheet" href="styles/global.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
@@ -128,6 +129,7 @@
             <!--Wrapper for Map-->
             <div id="map"></div>
             <script type="text/javascript">
+                //Setting map location to include the three arcades
                 var mymap = L.map('map').setView([35.7, 139.7034547978866], 14);
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -148,6 +150,7 @@
                 shadowSize: [41, 41]
                 });
 
+                //Markers for each of the hard coded arcades
                 var mikadoMarker = L.marker([35.71286574986599, 139.7034547978866], {icon:redIcon}).addTo(mymap);
                 mikadoMarker.bindPopup("<a href=./individual_sample.html>Mikado Game Center</a>");
 
@@ -157,6 +160,7 @@
                 var segaMarker = L.marker([35.68979753397573, 139.6973720825395], {icon:redIcon}).addTo(mymap);
                 segaMarker.bindPopup("<a href=./individual_sample.html>Club Sega</a>");
                 
+                //Prevents leaflet loading error
                 setInterval(function () {
                     mymap.invalidateSize();
                 }, 100);
@@ -164,7 +168,9 @@
             <!--Wrapper for the results that come up from search-->
             <div class="resultsMain">
                 <div class="topText">
-                    <h1>Results For "Japan"</h1>
+                    <h1>Results For "</h1>
+                    <h1 id="searchResult">Japan</h1>
+                    <h1>"</h1>
                     <a href="./submission.html">
                         <p style="color: crimson;">Location not listed?</p>
                     </a>
