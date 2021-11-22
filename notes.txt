@@ -60,3 +60,5 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 
 geolocation api
 https://www.w3schools.com/html/html5_geolocation.asp
+
+https://stackoverflow.com/questions/1036603/storing-business-hours-in-a-database

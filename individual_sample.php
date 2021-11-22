@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+
+<?php
+    //MySQL information
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "arcades";
+
+    $conn = new mysqli($servername, $username, $password, $dbname); //connect to databse
+
+    //Checking if connection was succesful
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM location WHERE id=1"; //Query for specific row
+    $result = $conn->query($sql); //Performing query
+    $row = $result->fetch_assoc(); //storing result in row variable
+    ?>
+
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -15,114 +35,15 @@
         rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <meta name="description" content="Review page for Mikado Game Center which contains information about the location and reviews.">
-        <title>Mikado Game Center</title>
+        <meta name="description" content="Review page for <?php echo $row["name"]?> which contains information about the location and reviews.">
+        <title><?php echo $row["name"]?></title>
     </head>
+    
+    <?php 
+    include("header.php"); //Include header elements
+    ?>
+
     <body>
-        <header>
-            <!--Desktop navbar-->
-            <div class="nav">
-                <a href="./search.html">
-                    <h1 class="home">Home</h1>
-                </a>
-                <div class="dropdown">
-                    <div class="dropdownbtn">
-                        <h1 class="dropdowntxt">Arcade</h1>
-                        <span class="material-icons">
-                            arrow_drop_down
-                        </span>
-                    </div>
-                    <div class="dropdownContent">
-                        <a href="./individual_sample.html">
-                            <p>Sample Object</p>
-                        </a>
-                        <a href="./submission.html">
-                            <p>Submission</p>
-                        </a>
-                        <a href="./results_sample.html">
-                            <p>Results</p>
-                        </a>
-                        <a>
-                            <p>Video Arcade Machine</p>
-                        </a>
-                        <a>
-                            <p>Pinball Machines</p>
-                        </a>
-                        <a>
-                            <p>Interactive Games</p>
-                        </a>
-                        <a>
-                            <p>Ticket Games</p>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!--Navigation bar for mobile-->
-            <div class="navmobile">
-                <div class="dropdown">
-                    <div class="dropdownbtn">
-                        <h1 class="dropdowntxt">Menu</h1>
-                        <span class="material-icons">
-                            arrow_drop_down
-                        </span>
-                    </div>
-                    <div class="dropdownContent">
-                        <a href="./search.html">
-                            <p>Home</p>
-                        </a>
-                        <a href="./individual_sample.html">
-                            <p>Sample Object</p>
-                        </a>
-                        <a href="./submission.html">
-                            <p>Submission</p>
-                        </a>
-                        <a href="./results_sample.html">
-                            <p>Results</p>
-                        </a>
-                        <a>
-                            <p>Video Arcade Machine</p>
-                        </a>
-                        <a>
-                            <p>Pinball Machines</p>
-                        </a>
-                        <a>
-                            <p>Interactive Games</p>
-                        </a>
-                        <a>
-                            <p>Ticket Games</p>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-            <form class="search">
-                <input type="text" placeholder="Find an arcade...">
-                <button type="submit">
-                    <!-- icon within the button-->
-                    <span class="material-icons">
-                        search
-                    </span>
-                </button>
-            </form>
-
-            <!--bundling the buttons used for user auth-->
-            <div>
-                <!--Login button-->
-                <form style="display: inline" action="registration.html" method="get">
-                    <button class="user login" type="submit">
-                        Log In
-                    </button>
-                </form>
-                <!--Sign up button-->
-                <form style="display: inline"  action="registration.html" method="get">
-                    <button class="user signup" type="submit">
-                        Sign Up
-                    </button>
-                </form>
-            </div>
-        </header>
         <div>
             <!--Wrapper for object page-->
             <div class="objWrapper">
@@ -130,7 +51,7 @@
                 <div class="objMain">
                     <!--wrapper for the main description part of the object-->
                     <div class="objDesc">
-                        <p class="name">Mikado Game Center</p>
+                        <p class="name"><?php echo $row["name"]?></p>
                         <!--star ratings-->
                         <div class="rating">
                             <span class="material-icons">
@@ -165,15 +86,15 @@
                         </button>
                     </div>
                     <!--Image of the object-->
-                    <img src="./assets/mikado.jpg" alt="Mikado Store Front">
+                    <img src="./assets/<?php echo $row["picture"]?>" alt="Mikado Store Front">
                 </div>
                                 <!--Sidebar-->
                 <div class="sidebar">
                     <div class="sidebarWrapper">
                         <h3>Address</h3>
-                        <p>4 Chome-5-10 Takadanobaba, Shinjuku City, Tokyo 169-0075, Japan</p>
+                        <p><?php echo $row["address"]?></p>
                         <h3>Phone</h3>
-                        <p>+81 3-5386-0127</p>
+                        <p><?php echo $row["phone"]?></p>
                     </div>
                 </div>
 
@@ -181,9 +102,8 @@
                 <div class="catWrapper">
                     <h1>Description</h1>
                     <div>
-                        <p class="description">One of the most famous arcades in Japan. This arcade has been around for a long time
-                            and is very popular amongst fighting game players. While being popular with fans of 
-                            fighting games, there are plenty of genres of arcade games here for your entertainment.
+                        <p class="description">
+                            <?php echo $row["description"]?>
                         </p>
                     </div>
                 </div>
@@ -193,7 +113,7 @@
                     <h1>Location and Hours</h1>
                     <div id="map"></div>
                     <script type="text/javascript">
-                        var mymap = L.map('map').setView([35.71286574986599, 139.7034547978866], 15);
+                        var mymap = L.map('map').setView([<?php echo $row["x"]?>, <?php echo $row["y"]?>], 15);
                         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                         maxZoom: 24,
@@ -311,19 +231,8 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <div>
-                <h1>About</h1>
-                <p>Website for COMP SCI 4WW3. The purpose of this website 
-                    is to allow users to read and write reviews of various arcades around the world
-
-                </p>
-            </div>
-            <div>
-                <h1>Author</h1>
-                <p>This website was created by Christian Trinh</p>
-            </div>
-            
-        </footer>
+        <?php 
+        include ("footer.php"); //Include footer elements
+        ?>
     </body>
 </html>
