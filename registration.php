@@ -70,6 +70,12 @@ include("./includes/regSubmit.php"); //registration server side
                     if ($accountCreated){
                         echo "<p>Account succesfully created.</p>";
                     }
+
+                    if (count($errors) > 0) {
+                        foreach ($errors as $error) {
+                            echo "<p>$error</p>";
+                        }
+                    }
                     ?>
                 </div>
             </div>
