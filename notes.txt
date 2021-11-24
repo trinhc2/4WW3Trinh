@@ -40,6 +40,8 @@ https://primetimeamusements.com/building-arcade-pt-1-types-arcade-games/
 
 https://stackoverflow.com/questions/6393827/can-i-nest-a-button-element-inside-an-a-using-html5
 
+Part 2
+
 regex
 https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 
@@ -61,4 +63,10 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 geolocation api
 https://www.w3schools.com/html/html5_geolocation.asp
 
+Part 3
 https://stackoverflow.com/questions/1036603/storing-business-hours-in-a-database
+
+https://www.w3schools.com/php/php_mysql_insert.asp
+https://codewithawa.com/posts/complete-user-registration-system-using-php-and-mysql-database
+
+https://phpdelusions.net/mysqli_examples/prepared_select
