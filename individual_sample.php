@@ -13,10 +13,15 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    $id = 1;
 
-    $sql = "SELECT * FROM location WHERE id=1"; //Query for specific row
-    $result = $conn->query($sql); //Performing query
-    $row = $result->fetch_assoc(); //storing result in row variable
+    //https://phpdelusions.net/mysqli_examples/prepared_select
+    $sql = "SELECT * FROM location WHERE id=?"; //Query for specific row
+    $stmt = $conn->prepare($sql);//Preparing statement
+    $stmt->bind_param("s", $id);//binding id 
+    $stmt->execute(); //executing query
+    $result = $stmt->get_result(); //retrieving result
+    $row = $result->fetch_assoc(); //fetch result row as associative array
     ?>
 
 <html lang="en">
@@ -28,19 +33,14 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+        <?php include("./includes/head.php")?>
         <link rel="stylesheet" href="./styles/object.css">
-        <link rel="stylesheet" href="./styles/global.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
         <meta name="description" content="Review page for <?php echo $row["name"]?> which contains information about the location and reviews.">
         <title><?php echo $row["name"]?></title>
     </head>
     
     <?php 
-    include("header.php"); //Include header elements
+    include("./includes/header.php"); //Include header elements
     ?>
 
     <body>
@@ -86,7 +86,7 @@
                         </button>
                     </div>
                     <!--Image of the object-->
-                    <img src="./assets/<?php echo $row["picture"]?>" alt="Mikado Store Front">
+                    <img src="./assets/<?php echo $row["picture"]?>" alt=<?php echo $row["name"]?>>
                 </div>
                                 <!--Sidebar-->
                 <div class="sidebar">
@@ -232,7 +232,9 @@
             </div>
         </div>
         <?php 
-        include ("footer.php"); //Include footer elements
+        include ("./includes/footer.php"); //Include footer elements
+
+        $conn->close();
         ?>
     </body>
 </html>
