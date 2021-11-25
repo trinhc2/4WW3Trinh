@@ -8,5 +8,5 @@ function getLocation() {
 
 //On Success reroute page to results with coordinates in the url (simulating GET request)
 function success(position) {
-    window.location.replace("./results_sample.html?xcoord=" + position.coords.latitude + "&ycoord=" + position.coords.longitude);
+    window.location.replace("./results_sample.php?x=" + position.coords.latitude + "&y=" + position.coords.longitude);
 }

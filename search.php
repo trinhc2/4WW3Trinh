@@ -2,12 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./styles/search.css">
-        <link rel="stylesheet" href="./styles/global.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
+        <?php include("./includes/head.php")?>
         <meta name="description" content="Search bar that allows users to search for objects by name.">
         <title>Arcades!</title>
         <script type="text/javascript" src="./js/search.js"></script>
@@ -16,7 +11,7 @@
         <header>
             <!--Navigation bar for browsers-->
             <div class="nav">
-                <a href="./search.html">
+                <a href="./search.php">
                     <h1 class="home">Home</h1>
                 </a>
                 <div class="dropdown">
@@ -27,13 +22,13 @@
                         </span>
                     </div>
                     <div class="dropdownContent">
-                        <a href="./individual_sample.html">
+                        <a href="./individual_sample.php">
                             <p>Sample Object</p>
                         </a>
                         <a href="./submission.html">
                             <p>Submission</p>
                         </a>
-                        <a href="./results_sample.html">
+                        <a href="./results_sample.php">
                             <p>Results</p>
                         </a>
                         <a>
@@ -63,16 +58,16 @@
                         </span>
                     </div>
                     <div class="dropdownContent">
-                        <a href="./search.html">
+                        <a href="./search.php">
                             <p>Home</p>
                         </a>
-                        <a href="./individual_sample.html">
+                        <a href="./individual_sample.php">
                             <p>Sample Object</p>
                         </a>
                         <a href="./submission.html">
                             <p>Submission</p>
                         </a>
-                        <a href="./results_sample.html">
+                        <a href="./results_sample.php">
                             <p>Results</p>
                         </a>
                         <a>
@@ -99,13 +94,13 @@
             <!--bundling the buttons used for user auth-->
             <div>
                 <!--Login button-->
-                <form style="display: inline" action="registration.html" method="get">
+                <form style="display: inline" action="registration.php" method="post">
                     <button class="user login" type="submit">
                         Log In
                     </button>
                 </form>
                 <!--Sign up button-->
-                <form style="display: inline"  action="registration.html" method="get">
+                <form style="display: inline"  action="registration.php" method="post">
                     <button class="user signup" type="submit">
                         Sign Up
                     </button>
@@ -114,9 +109,9 @@
         </header>
         <div class="mainSearch">
             <!-- Form which contains the search elements-->
-            <form class="search">
+            <form class="search" action="./results_sample.php" method="get">
                 <!--Search bar-->
-                <input type="text" placeholder="Find an arcade...">
+                <input type="text" placeholder="Find an arcade..." name="search">
                 <!--Search submission button-->
                 <button type="submit">
                     <!-- icon within the button-->
@@ -131,19 +126,10 @@
             </div>
         </div>
         <!--Footer-->
-        <div style="display: flex;">
-            <footer>
-                <div>
-                    <h1>About</h1>
-                    <p>Website for COMP SCI 4WW3. The purpose of this website 
-                        is to allow users to read and write reviews of various arcades around the world
-                    </p>
-                </div>
-                <div>
-                    <h1>Author</h1>
-                    <p>This website was created by Christian Trinh</p>
-                </div>
-            </footer>
-        </div>
+        <?php 
+        include ("./includes/footer.php"); //Include footer elements
+
+        
+        ?>
     </body>
 </html>
