@@ -1,4 +1,43 @@
 <!DOCTYPE html>
+
+<?php
+    //MySQL information
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "arcades";
+
+    $conn = new mysqli($servername, $username, $password, $dbname); //connect to databse
+
+    //Checking if connection was succesful
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $search = "";
+    $xMapAvg = 0;
+    $yMapAvg = 0;
+
+    if (isset($_GET['search'])) {
+        $search = $_GET['search'];
+        //https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
+        $sql = "SELECT * FROM `location` WHERE CONCAT_WS('', `name`, 
+                `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
+                LIKE ?"; //Scanning multiple columns for matching terms
+        $stmt = $conn->prepare($sql); //preparing statement
+        $searchLike = "%" . $search . "%"; //Adding wildcard to search term
+        $stmt->bind_param("s", $searchLike); //binding param
+        $stmt->execute();
+        $result = $stmt->get_result(); //obtaining result
+        //$row = $result->fetch_assoc();
+        //echo $row['name'];
+
+        //https://stackoverflow.com/questions/12691303/php-cannot-loop-through-mysql-rows-more-than-once
+        
+    }
+
+    ?>
+
+
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -10,120 +49,14 @@
         crossorigin=""></script>
 
         <link rel="stylesheet" href="./styles/results.css">
-        <link rel="stylesheet" href="./styles/global.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
+        <?php include("./includes/head.php")?>
         <meta name="description" content="Results page shown to user after inputting a search term.">
         <title>Results</title>
     </head>
+    <?php 
+    include("./includes/header.php"); //Include header elements
+    ?>
     <body>
-        <header>
-            <!--Desktop navbar-->
-            <div class="nav">
-                <a href="./search.html">
-                    <h1 class="home">Home</h1>
-                </a>
-                <div class="dropdown">
-                    <div class="dropdownbtn">
-                        <h1 class="dropdowntxt">Arcade</h1>
-                        <span class="material-icons">
-                            arrow_drop_down
-                        </span>
-                    </div>
-                    <div class="dropdownContent">
-                        <a href="./individual_sample.html">
-                            <p>Sample Object</p>
-                        </a>
-                        <a href="./submission.html">
-                            <p>Submission</p>
-                        </a>
-                        <a href="./results_sample.html">
-                            <p>Results</p>
-                        </a>
-                        <a>
-                            <p>Video Arcade Machine</p>
-                        </a>
-                        <a>
-                            <p>Pinball Machines</p>
-                        </a>
-                        <a>
-                            <p>Interactive Games</p>
-                        </a>
-                        <a>
-                            <p>Ticket Games</p>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!--Navigation bar for mobile-->
-            <div class="navmobile">
-                <div class="dropdown">
-                    <div class="dropdownbtn">
-                        <h1 class="dropdowntxt">Menu</h1>
-                        <span class="material-icons">
-                            arrow_drop_down
-                        </span>
-                    </div>
-                    <div class="dropdownContent">
-                        <a href="./search.html">
-                            <p>Home</p>
-                        </a>
-                        <a href="./individual_sample.html">
-                            <p>Sample Object</p>
-                        </a>
-                        <a href="./submission.html">
-                            <p>Submission</p>
-                        </a>
-                        <a href="./results_sample.html">
-                            <p>Results</p>
-                        </a>
-                        <a>
-                            <p>Video Arcade Machine</p>
-                        </a>
-                        <a>
-                            <p>Pinball Machines</p>
-                        </a>
-                        <a>
-                            <p>Interactive Games</p>
-                        </a>
-                        <a>
-                            <p>Ticket Games</p>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-            <form class="search">
-                <input type="text" placeholder="Find an arcade...">
-                <button type="submit">
-                    <!-- icon within the button-->
-                    <span class="material-icons">
-                        search
-                    </span>
-                </button>
-            </form>
-
-            <!--bundling the buttons used for user auth-->
-            <div>
-                <!--Login button-->
-                <form style="display: inline" action="registration.html" method="get">
-                    <button class="user login" type="submit">
-                        Log In
-                    </button>
-                </form>
-                <!--Sign up button-->
-                <form style="display: inline"  action="registration.html" method="get">
-                    <button class="user signup" type="submit">
-                        Sign Up
-                    </button>
-                </form>
-            </div>
-        </header>
         <!--Wrapper for page contents-->
         <div class="resultsWrapper">
             <!--Wrapper for Map-->
@@ -151,8 +84,6 @@
                 });
 
                 //Markers for each of the hard coded arcades
-                var mikadoMarker = L.marker([35.71286574986599, 139.7034547978866], {icon:redIcon}).addTo(mymap);
-                mikadoMarker.bindPopup("<a href=./individual_sample.html>Mikado Game Center</a>");
 
                 var taitoMarker = L.marker([35.69002017350261, 139.70220112486624], {icon:redIcon}).addTo(mymap);
                 taitoMarker.bindPopup("<a href=./individual_sample.html>Taito Game Station</a>");
@@ -169,18 +100,26 @@
             <div class="resultsMain">
                 <div class="topText">
                     <h1>Results For "</h1>
-                    <h1 id="searchResult">Japan</h1>
+                    <h1 id="searchResult"><?php echo $search;?></h1>
                     <h1>"</h1>
                     <a href="./submission.html">
                         <p style="color: crimson;">Location not listed?</p>
                     </a>
                 </div>
                 <!--Wrapper for object that came up from search-->
+                <?php
+                while ($row = $result->fetch_assoc()) {
+
+                ?>
+                <script type="text/javascript">
+                    var Marker = L.marker([<?php echo $row['x'];?>, <?php echo $row['y'];?>], {icon:redIcon}).addTo(mymap);
+                    Marker.bindPopup("<a href=./individual_sample.php><?php echo $row['name'];?></a>");
+                </script>
                 <div class="object">
-                    <img src="assets/mikado.jpg" alt="Mikado store front">
+                    <img src="assets/<?php echo $row['picture'];?>" alt="Mikado store front">
                     <div class="objectDesc">
-                        <a href="./individual_sample.html">
-                            <h1>Mikado Game Center</h1>
+                        <a href="./individual_sample.php">
+                            <h1><?php echo $row['name'];?></h1>
                         </a>
                         <div class="rating">
                             <span class="material-icons">
@@ -204,6 +143,9 @@
                         <p>"I love this arcade!"</p>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
                 <div class="object">
                     <img src="assets/clubsega.jpeg" alt="Club Sega store front">
                     <div class="objectDesc">
@@ -263,19 +205,8 @@
                 </div>
             </div>
         </div>
-        <div style="display: flex;">
-            <footer>
-                <div>
-                    <h1>About</h1>
-                    <p>Website for COMP SCI 4WW3. The purpose of this website 
-                        is to allow users to read and write reviews of various arcades around the world
-                    </p>
-                </div>
-                <div>
-                    <h1>Author</h1>
-                    <p>This website was created by Christian Trinh</p>
-                </div>
-            </footer>
-        </div>
+        <?php 
+        include ("./includes/footer.php"); //Include footer elements
+        ?>
     </body>
 </html>
