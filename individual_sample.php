@@ -6,29 +6,32 @@
     $username = "root";
     $password = "";
     $dbname = "arcades";
-
-    $conn = new mysqli($servername, $username, $password, $dbname); //connect to databse
-
-    //Checking if connection was succesful
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     $id = 0;
 
-    if (isset($_GET['id'])){
-        $id = $_GET['id'];
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //connect to database
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            //https://phpdelusions.net/mysqli_examples/prepared_select
+        if (isset($_GET['id'])){
+            $id = $_GET['id'];
+        }
+
+        $sql = "SELECT location.*, COUNT(review.locationid) AS reviews 
+        FROM `location`
+        LEFT JOIN review ON location.id = review.locationid
+        WHERE location.id=:id"; //Query for specific row
+        $stmt = $conn->prepare($sql);//Preparing statement
+        $stmt->bindParam(':id', $id);//binding id 
+        $stmt->execute(); //executing query
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);//obtain row as associative array
+    }
+    catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
     }
 
-    //https://phpdelusions.net/mysqli_examples/prepared_select
-    $sql = "SELECT location.*, COUNT(review.locationid) AS reviews 
-    FROM `location`
-    LEFT JOIN review ON location.id = review.locationid
-    WHERE location.id=?"; //Query for specific row
-    $stmt = $conn->prepare($sql);//Preparing statement
-    $stmt->bind_param("s", $id);//binding id 
-    $stmt->execute(); //executing query
-    $result = $stmt->get_result(); //retrieving result
-    $row = $result->fetch_assoc(); //fetch result row as associative array
+
     ?>
 
 <html lang="en">
@@ -173,12 +176,11 @@
                     <?php 
                         $sql = "SELECT review.*, users.firstname as name FROM `review`
                         LEFT JOIN users ON review.userid = users.id
-                        WHERE locationid = ?"; //Query for specific row
+                        WHERE locationid = :id"; //Query for specific row
                         $stmt = $conn->prepare($sql);//Preparing statement
-                        $stmt->bind_param("s", $id);//binding id 
+                        $stmt->bindParam(':id', $id);//binding id 
                         $stmt->execute(); //executing query
-                        $result = $stmt->get_result(); //retrieving result
-                        while ($row = $result->fetch_assoc()) {
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <div class="revWrapper">
                         <!--Wrapper for reviewer's profile-->
@@ -287,7 +289,7 @@
         <?php 
         include ("./includes/footer.php"); //Include footer elements
 
-        $conn->close();
+        $conn = null;
         ?>
     </body>
 </html>

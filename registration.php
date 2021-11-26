@@ -61,7 +61,7 @@ include("./includes/regSubmit.php"); //registration server side
                     </button>
                 </div>
                 <div class="fourth">
-                        <button class="cancel" onclick="location.href='./search.html'" type="button">
+                        <button class="cancel" onclick="location.href='./search.php'" type="button">
                             Cancel
                         </button>
                 </div>

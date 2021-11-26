@@ -6,50 +6,52 @@
     $username = "root";
     $password = "";
     $dbname = "arcades";
-
-    $conn = new mysqli($servername, $username, $password, $dbname); //connect to databse
-
-    //Checking if connection was succesful
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     $search = "";
-    $xMapAvg = 0;
-    $yMapAvg = 0;
+    $nearYou = false;
 
-    if (isset($_GET['search'])) {//if search is defined then update our search variable
-        $search = $_GET['search'];
-    }
-        //https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
-        //https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
-        //https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
-        //https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //connect to database
 
-        /*
-        review left join to find the total number of reviews (COUNT)
-        sample left join to provide a sample, highest rated review of the location
-        Where clause scans most of the location table columns for matches
-        */
-        $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
-        LEFT JOIN review ON location.id = review.locationid
-        LEFT JOIN (
-            SELECT sample.locationid, sample.review
-            FROM review AS sample
-            ORDER BY rating DESC
-            LIMIT 1
-            ) AS sample
-            ON location.id = sample.locationid
-        WHERE CONCAT_WS('', `name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
-        LIKE ?;";
-        $stmt = $conn->prepare($sql); //preparing statement
-        $searchLike = "%" . $search . "%"; //Adding wildcard to search term
-        $stmt->bind_param("s", $searchLike); //binding param
-        $stmt->execute();
-        $result = $stmt->get_result(); //obtaining result
-
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (isset($_GET['search'])) {//if search is defined then update our search variable
+            $search = $_GET['search'];
+        }
+    
+        if (isset($_GET['x']) and isset($_GET['y'])) {
+            $nearYou = true;
+        }
         
+            //https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
+            //https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
+            //https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
+            //https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
     
-    
+            /*
+            review left join to find the total number of reviews (COUNT)
+            sample left join to provide a sample, highest rated review of the location
+            Where clause scans most of the location table columns for matches
+            */
+            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
+            LEFT JOIN review ON location.id = review.locationid
+            LEFT JOIN (
+                SELECT sample.locationid, sample.review
+                FROM review AS sample
+                ORDER BY rating DESC
+                LIMIT 1
+                ) AS sample
+                ON location.id = sample.locationid
+            WHERE CONCAT_WS('', `name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
+            LIKE :search;";
+            $stmt = $conn->prepare($sql); //preparing statement
+            $searchLike = "%" . $search . "%"; //Adding wildcard to search term
+            $stmt->bindParam(':search', $searchLike); //binding param
+            $stmt->execute();
+    }
+    catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    }
+        
+
 
     ?>
 
@@ -126,8 +128,10 @@
                 <!--Wrapper for object that came up from search-->
                 <?php
                 //Iterating through every row
-                while ($row = $result->fetch_assoc()) {
-
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    if ($row['id'] == null){
+                        continue;
+                    }
                 ?>
                 <script type="text/javascript">
                     //Create a marker for the location
@@ -166,6 +170,7 @@
                 </div>
                     <?php
                     } //End while loopp 
+                
                     ?>
                 <div class="object">
                     <img src="assets/clubsega.jpeg" alt="Club Sega store front">
@@ -228,6 +233,7 @@
         </div>
         <?php 
         include ("./includes/footer.php"); //Include footer elements
+        $conn = null;
         ?>
     </body>
 </html>
