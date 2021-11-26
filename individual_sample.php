@@ -13,10 +13,17 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $id = 1;
+    $id = 0;
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
 
     //https://phpdelusions.net/mysqli_examples/prepared_select
-    $sql = "SELECT * FROM location WHERE id=?"; //Query for specific row
+    $sql = "SELECT location.*, COUNT(review.locationid) AS reviews 
+    FROM `location`
+    LEFT JOIN review ON location.id = review.locationid
+    WHERE location.id=?"; //Query for specific row
     $stmt = $conn->prepare($sql);//Preparing statement
     $stmt->bind_param("s", $id);//binding id 
     $stmt->execute(); //executing query
@@ -71,7 +78,7 @@
                             </span>
                             <!--user can click on reviews to jump to review section-->
                             <a href="#reviews">
-                                <p class="numReview" style="color: crimson; font-weight: bold;">2 Reviews</p>
+                                <p class="numReview" style="color: crimson; font-weight: bold;"><?php echo $row["reviews"]?> Reviews</p>
                             </a>
                         </div>
                         <!--Hours-->
@@ -163,6 +170,52 @@
                 <div class="catWrapper" id="reviews">
                     <h1>Reviews</h1>
                     <!--Wrapper for Reviews-->
+                    <?php 
+                        $sql = "SELECT review.*, users.firstname as name FROM `review`
+                        LEFT JOIN users ON review.userid = users.id
+                        WHERE locationid = ?"; //Query for specific row
+                        $stmt = $conn->prepare($sql);//Preparing statement
+                        $stmt->bind_param("s", $id);//binding id 
+                        $stmt->execute(); //executing query
+                        $result = $stmt->get_result(); //retrieving result
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <div class="revWrapper">
+                        <!--Wrapper for reviewer's profile-->
+                        <div class="revProfile">
+                            <button type="button">
+                                <span class="material-icons">
+                                    account_circle
+                                    </span>
+                            </button>
+                            <p><?php echo $row['name'];?></p>
+                        </div>
+                        <!--Wrapper for rating in stars-->
+                        <div class="rating">
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <span class="material-icons">
+                                star
+                            </span>
+                            <p class="numReview"><?php echo $row['date'];?></p>
+                        </div>
+                        <p class="review">
+                        <?php echo $row['review'];?>
+                        </p>
+                    </div>
+                    <?php
+                    } //End while loopp 
+                    ?>
                     <div class="revWrapper">
                         <!--Wrapper for reviewer's profile-->
                         <div class="revProfile">

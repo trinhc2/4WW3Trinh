@@ -17,13 +17,19 @@
     $xMapAvg = 0;
     $yMapAvg = 0;
 
-    if (isset($_GET['search'])) {
+    if (isset($_GET['search'])) {//if search is defined then update our search variable
         $search = $_GET['search'];
     }
         //https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
         //https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
         //https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
         //https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
+
+        /*
+        review left join to find the total number of reviews (COUNT)
+        sample left join to provide a sample, highest rated review of the location
+        Where clause scans most of the location table columns for matches
+        */
         $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
         LEFT JOIN review ON location.id = review.locationid
         LEFT JOIN (
@@ -34,7 +40,7 @@
             ) AS sample
             ON location.id = sample.locationid
         WHERE CONCAT_WS('', `name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
-        LIKE ?;"; //Scanning multiple columns for matching terms
+        LIKE ?;";
         $stmt = $conn->prepare($sql); //preparing statement
         $searchLike = "%" . $search . "%"; //Adding wildcard to search term
         $stmt->bind_param("s", $searchLike); //binding param
@@ -119,17 +125,21 @@
                 </div>
                 <!--Wrapper for object that came up from search-->
                 <?php
+                //Iterating through every row
                 while ($row = $result->fetch_assoc()) {
 
                 ?>
                 <script type="text/javascript">
+                    //Create a marker for the location
                     var Marker = L.marker([<?php echo $row['x'];?>, <?php echo $row['y'];?>], {icon:redIcon}).addTo(mymap);
                     Marker.bindPopup("<a href=./individual_sample.php><?php echo $row['name'];?></a>");
                 </script>
+
+                <!--Create the result entry -->
                 <div class="object">
                     <img src="assets/<?php echo $row['picture'];?>" alt="Mikado store front">
                     <div class="objectDesc">
-                        <a href="./individual_sample.php">
+                        <a href="./individual_sample.php?id=<?php echo $row['id'];?>">
                             <h1><?php echo $row['name'];?></h1>
                         </a>
                         <div class="rating">
@@ -154,9 +164,9 @@
                         <p>"<?php echo $row['reviewsample']?>"</p>
                     </div>
                 </div>
-                <?php
-                }
-                ?>
+                    <?php
+                    } //End while loopp 
+                    ?>
                 <div class="object">
                     <img src="assets/clubsega.jpeg" alt="Club Sega store front">
                     <div class="objectDesc">
