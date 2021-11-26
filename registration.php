@@ -71,6 +71,7 @@ include("./includes/regSubmit.php"); //registration server side
                         echo "<p>Account succesfully created.</p>";
                     }
 
+                    //If there are errors with registration, print them to the user
                     if (count($errors) > 0) {
                         foreach ($errors as $error) {
                             echo "<p>$error</p>";

@@ -1,7 +1,7 @@
 <header>
         <!--Desktop navbar-->
         <div class="nav">
-            <a href="./search.html">
+            <a href="./search.php">
                 <h1 class="home">Home</h1>
             </a>
             <div class="dropdown">
@@ -18,7 +18,7 @@
                     <a href="./submission.html">
                         <p>Submission</p>
                     </a>
-                    <a href="./results_sample.html">
+                    <a href="./results_sample.php">
                         <p>Results</p>
                     </a>
                     <a>
@@ -48,16 +48,16 @@
                     </span>
                 </div>
                 <div class="dropdownContent">
-                    <a href="./search.html">
+                    <a href="./search.php">
                         <p>Home</p>
                     </a>
-                    <a href="./individual_sample.php">
+                    <a href="individual_sample.php">
                         <p>Sample Object</p>
                     </a>
                     <a href="./submission.html">
                         <p>Submission</p>
                     </a>
-                    <a href="./results_sample.html">
+                    <a href="results_sample.php">
                         <p>Results</p>
                     </a>
                     <a>
@@ -76,8 +76,8 @@
                 </div>
             </div>
         </div>
-        <form class="search">
-            <input type="text" placeholder="Find an arcade...">
+        <form class="search" action="results_sample.php" method="get">
+            <input type="text" placeholder="Find an arcade..." name="search">
             <button type="submit">
                 <!-- icon within the button-->
                 <span class="material-icons">

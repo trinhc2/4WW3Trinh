@@ -70,3 +70,10 @@ https://www.w3schools.com/php/php_mysql_insert.asp
 https://codewithawa.com/posts/complete-user-registration-system-using-php-and-mysql-database
 
 https://phpdelusions.net/mysqli_examples/prepared_select
+
+https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
+
+https://stackoverflow.com/questions/12691303/php-cannot-loop-through-mysql-rows-more-than-once
+https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
+https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
+https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql

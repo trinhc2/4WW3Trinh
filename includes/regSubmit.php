@@ -14,7 +14,7 @@
 
     $emailTaken = false;
     $accountCreated = false;
-    $errors = array();
+    $errors = array(); //array to keep track of errors
 
     //Setting form input default values
     //When the user submits the form with an error, the forms that are validated are resused 

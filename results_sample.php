@@ -19,21 +19,31 @@
 
     if (isset($_GET['search'])) {
         $search = $_GET['search'];
+    }
         //https://stackoverflow.com/questions/2514548/how-to-search-multiple-columns-in-mysql
-        $sql = "SELECT * FROM `location` WHERE CONCAT_WS('', `name`, 
-                `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
-                LIKE ?"; //Scanning multiple columns for matching terms
+        //https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
+        //https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
+        //https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
+        $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
+        LEFT JOIN review ON location.id = review.locationid
+        LEFT JOIN (
+            SELECT sample.locationid, sample.review
+            FROM review AS sample
+            ORDER BY rating DESC
+            LIMIT 1
+            ) AS sample
+            ON location.id = sample.locationid
+        WHERE CONCAT_WS('', `name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
+        LIKE ?;"; //Scanning multiple columns for matching terms
         $stmt = $conn->prepare($sql); //preparing statement
         $searchLike = "%" . $search . "%"; //Adding wildcard to search term
         $stmt->bind_param("s", $searchLike); //binding param
         $stmt->execute();
         $result = $stmt->get_result(); //obtaining result
-        //$row = $result->fetch_assoc();
-        //echo $row['name'];
 
-        //https://stackoverflow.com/questions/12691303/php-cannot-loop-through-mysql-rows-more-than-once
         
-    }
+    
+    
 
     ?>
 
@@ -84,6 +94,7 @@
                 });
 
                 //Markers for each of the hard coded arcades
+
 
                 var taitoMarker = L.marker([35.69002017350261, 139.70220112486624], {icon:redIcon}).addTo(mymap);
                 taitoMarker.bindPopup("<a href=./individual_sample.html>Taito Game Station</a>");
@@ -138,9 +149,9 @@
                                 star_half
                             </span>
                             <!--user can click on reviews to jump to review section-->
-                            <p class="numReview">2 Reviews</p>
+                            <p class="numReview"><?php echo $row['reviews']?> Reviews</p>
                         </div>
-                        <p>"I love this arcade!"</p>
+                        <p>"<?php echo $row['reviewsample']?>"</p>
                     </div>
                 </div>
                 <?php
