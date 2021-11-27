@@ -6,7 +6,6 @@
     $username = "root";
     $password = "";
     $dbname = "arcades";
-    $id = 0;
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //connect to database
@@ -14,16 +13,13 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             //https://phpdelusions.net/mysqli_examples/prepared_select
-        if (isset($_GET['id'])){
-            $id = $_GET['id'];
-        }
 
         $sql = "SELECT location.*, COUNT(review.locationid) AS reviews 
         FROM `location`
         LEFT JOIN review ON location.id = review.locationid
         WHERE location.id=:id"; //Query for specific row
         $stmt = $conn->prepare($sql);//Preparing statement
-        $stmt->bindParam(':id', $id);//binding id 
+        $stmt->bindParam(':id', $_GET['id']);//binding id 
         $stmt->execute(); //executing query
         $row = $stmt->fetch(PDO::FETCH_ASSOC);//obtain row as associative array
     }

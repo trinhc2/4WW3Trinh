@@ -94,7 +94,7 @@
             <!--bundling the buttons used for user auth-->
             <div>
                 <!--Login button-->
-                <form style="display: inline" action="registration.php" method="post">
+                <form style="display: inline" action="login.php" method="post">
                     <button class="user login" type="submit">
                         Log In
                     </button>
