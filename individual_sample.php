@@ -14,7 +14,7 @@
 
             //https://phpdelusions.net/mysqli_examples/prepared_select
 
-        $sql = "SELECT location.*, COUNT(review.locationid) AS reviews 
+        $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, AVG(review.rating) as rating
         FROM `location`
         LEFT JOIN review ON location.id = review.locationid
         WHERE location.id=:id"; //Query for specific row
@@ -68,21 +68,16 @@
                         <p class="name"><?php echo $row["name"]?></p>
                         <!--star ratings-->
                         <div class="rating">
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star_half
-                            </span>
+                            <?php
+                            for ($i = 0; $i < floor($row['rating']); $i++) {
+                                echo "<span class='material-icons'>star</span>";
+                            }
+
+                            for ($i = floor($row['rating']); $i < 5; $i++) {
+                                echo "<span class='material-icons'>star_border</span>";
+                            }
+                            
+                            ?>
                             <!--user can click on reviews to jump to review section-->
                             <a href="#reviews">
                                 <p class="numReview" style="color: crimson; font-weight: bold;"><?php echo $row["reviews"]?> Reviews</p>
@@ -123,7 +118,7 @@
                             <span style="margin-right: 10px;" class="material-icons">
                                 rate_review
                             </span>
-                            Write a Review
+                            <p>Write a Review</p>
                         </button>
                     </div>
                     <!--Image of the object-->
@@ -212,7 +207,8 @@
                     <?php 
                         $sql = "SELECT review.*, users.firstname as name FROM `review`
                         LEFT JOIN users ON review.userid = users.id
-                        WHERE locationid = :id"; //Query for specific row
+                        WHERE locationid = :id
+                        ORDER BY review.date DESC"; //Query for all reviews in descending order
                         $stmt = $conn->prepare($sql);//Preparing statement
                         $stmt->bindParam(':id', $_GET['id']);//binding id 
                         $stmt->execute(); //executing query
@@ -230,21 +226,16 @@
                         </div>
                         <!--Wrapper for rating in stars-->
                         <div class="rating">
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
+                            <?php
+                                for ($i = 0; $i < floor($row['rating']); $i++) {
+                                    echo "<span class='material-icons'>star</span>";
+                                }
+
+                                for ($i = floor($row['rating']); $i < 5; $i++) {
+                                    echo "<span class='material-icons'>star_border</span>";
+                                }
+                                
+                            ?>
                             <p class="numReview"><?php echo $row['date'];?></p>
                         </div>
                         <p class="review">

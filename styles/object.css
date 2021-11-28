@@ -172,6 +172,10 @@ p {
     background: rgb(214, 85, 109);
 }
 
+.reviewButton p:hover{
+    text-decoration: underline;
+}
+
 .sidebar {
     /*side bar taking up 100% height 100px from the right, 81 px from the top*/
     right: 100px;
