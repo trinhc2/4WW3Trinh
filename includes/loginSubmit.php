@@ -1,4 +1,8 @@
 <?php
+    if (session_id() == "") { //if no existing session, creat one
+        session_start();
+    }
+
     //MySQL information
     $servername = "localhost";
     $username = "root";
@@ -39,14 +43,20 @@
 
                 if ($stmt->rowCount() != 0) {
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $loginPass = sha1($loginPass . $row['salt']);
+                    $hashPass = sha1($loginPass . $row['salt']);
+
                     $query2 = "SELECT * from users
                     WHERE email=:email AND passwordhash=:password LIMIT 1";
                     $stmt2 = $conn->prepare($query2);
                     $stmt2->bindParam(':email', $loginEmail);
-                    $stmt2->bindParam(':password', $loginPass);
+                    $stmt2->bindParam(':password', $hashPass);
                     $stmt2->execute();
                     if ($stmt2->rowCount() != 0) {
+                        $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+                        $_SESSION['name'] = $row['firstname']; //update session name
+                        
+                        $_SESSION['isLoggedIn'] = true; //update session status
+                        header('location: search.php');
 
                     }
                     else {

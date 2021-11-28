@@ -1,3 +1,13 @@
+<?php 
+    if (session_id() == "") { //if no session, creat one
+        session_start();
+    }
+
+    if (isset($_POST['logout'])){// if user logs out, destroy session
+        session_unset();
+        session_destroy();
+    }
+?>
 <header>
         <!--Desktop navbar-->
         <div class="nav">
@@ -88,6 +98,24 @@
 
         <!--bundling the buttons used for user auth-->
         <div>
+            <?php 
+            if (isset($_SESSION['isLoggedIn'])) {//if user is logged in, change header
+               
+            ?>
+            <div class="userAuth">
+                <p>Hi, <?php echo $_SESSION['name']?></p>
+
+                <form action="?" method="post">
+                    <button class="user signup" type="submit" name="logout">Sign Out</button>
+                </form>
+            </div>
+            
+            <?php 
+            }
+            else {
+                
+            
+            ?>
             <!--Login button-->
             <form style="display: inline" action="login.php" method="post">
                 <button class="user login" type="submit">
@@ -100,5 +128,9 @@
                     Sign Up
                 </button>
             </form>
+            <?php 
+            }   
+            
+            ?>
         </div>
     </header>

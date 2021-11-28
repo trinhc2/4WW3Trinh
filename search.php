@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php 
+    if (session_id() == "") { //if no existing session, create one
+        session_start();
+    }
+
+    if (isset($_POST['logout'])){ //if user logouts, destroy session
+        session_unset();
+        session_destroy();
+    }
+?>
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./styles/search.css">
@@ -93,6 +103,24 @@
             
             <!--bundling the buttons used for user auth-->
             <div>
+                <?php 
+                if (isset($_SESSION['isLoggedIn'])) { //if user is logged, change header
+                
+                ?>
+                <div class="userAuth">
+                    <p>Hi, <?php echo $_SESSION['name']?></p>
+                    
+                    <form action="?" method="post">
+                        <button class="user signup" type="submit" name="logout">Sign Out</button>
+                    </form>
+                </div>
+                
+                <?php 
+                }
+                else {
+                    
+                
+                ?>
                 <!--Login button-->
                 <form style="display: inline" action="login.php" method="post">
                     <button class="user login" type="submit">
@@ -105,6 +133,10 @@
                         Sign Up
                     </button>
                 </form>
+                <?php 
+                }   
+                
+                ?>
             </div>
         </header>
         <div class="mainSearch">
