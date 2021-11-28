@@ -49,6 +49,19 @@ p {
 .hours{
     display: inline-block;
     margin-top: 20px;
+    margin-left: 10px;
+}
+
+.open {
+    color: forestgreen;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.closed {
+    color: crimson;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .name {
@@ -96,7 +109,7 @@ p {
     /*A grid to display the open/closing times on each day*/
     display: grid;
     grid-template-columns: 50px 150px;
-    grid-column-gap: 30px;
+    grid-column-gap: 40px;
     float:left;
     margin-left: 40px;
     margin-top: 0px;

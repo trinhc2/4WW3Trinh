@@ -22,6 +22,14 @@
         $stmt->bindParam(':id', $_GET['id']);//binding id 
         $stmt->execute(); //executing query
         $row = $stmt->fetch(PDO::FETCH_ASSOC);//obtain row as associative array
+
+        //Query to find location hours
+        $hoursSQL = "SELECT * FROM `hours`
+        WHERE locationid = :id
+        ORDER BY day ASC";
+        $hoursSTMT = $conn->prepare($hoursSQL);
+        $hoursSTMT->bindParam(':id', $_GET['id']);
+        $hoursSTMT->execute();
     }
     catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -81,8 +89,35 @@
                             </a>
                         </div>
                         <!--Hours-->
-                        <p class="hours">Open</p>
-                        <p class="hours">10:00 AM - 12:00AM</p>
+                        <?php 
+                        while ($hourRow = $hoursSTMT->fetch(PDO::FETCH_ASSOC)) {
+                            if ($hourRow['day'] == date('w')){ //finding the hours for todays date
+                                break;
+                            }
+                        }
+
+                        if (isset($hourRow['open']) && isset ($hourRow['close'])) { //if the opening and closing times are defined
+                            $open = $hourRow['open'];
+                            $close = $hourRow['close'];
+
+                            if (strtotime($open) > strtotime($close)) {//if location closes early morning (before open)
+                                if (strtotime(date("H:i:s")) > strtotime($open) && strtotime(date("H:i:s")) > strtotime($close)) {
+                                    echo '<p class="open">Open</p>';
+                                }
+                                else 
+                                    echo '<p class="closed">Closed</p>';
+                            }
+                            else {
+                                if (strtotime($open) < strtotime(date("H:i:s")) && strtotime(date("H:i:s")) < strtotime($close)) {
+                                    echo '<p class="open">Open</p>';
+                                }
+                                else {
+                                    echo '<p class="closed">Closed</p>';
+                                }
+                            }
+                            echo "<p class='hours'>" . date('g:i A', strtotime($open)) . " - " . date('g:i A', strtotime($close)) . "</p>";
+                        }
+                        ?>
                         <!--Button to write a review-->
                         <button class="reviewButton" type="button">
                             <span style="margin-right: 10px;" class="material-icons">
@@ -139,28 +174,33 @@
                         shadowSize: [41, 41]
                         });
         
-                        var mikadoMarker = L.marker([35.71286574986599, 139.7034547978866], {icon:redIcon}).addTo(mymap);
-                        mikadoMarker.bindPopup("<a href=./individual_sample.html>Mikado Game Center</a>").openPopup();
+                        var marker = L.marker([35.71286574986599, 139.7034547978866], {icon:redIcon}).addTo(mymap);
+                        marker.bindPopup("<a href=./individual_sample.php?id=<?php echo $row['id'];?>><?php echo $row['name'];?></a>").openPopup();
                         
                         setInterval(function () {
                             mymap.invalidateSize();
                         }, 100);
                     </script>
                     <div class="dateGrid">
-                        <p style="margin-block-start: 0px;">Sun</p>
-                        <p style="margin-block-start: 0px;">10:00 AM - 12:00AM</p>
-                        <p>Mon</p>
-                        <p>10:00 AM - 12:00AM</p>
-                        <p>Tue</p>
-                        <p>10:00 AM - 12:00AM</p>
-                        <p>Wed</p>
-                        <p>10:00 AM - 12:00AM</p>
-                        <p>Thu</p>
-                        <p>10:00 AM - 12:00AM</p>
-                        <p>Fri</p>
-                        <p>10:00 AM - 12:00AM</p>
-                        <p>Sat</p>
-                        <p>10:00 AM - 12:00AM</p>
+                        <?php 
+                        
+                        $days = [
+                            0 => 'Sunday',
+                            1 => 'Monday',
+                            2 => 'Tuesday',
+                            3 => 'Wednesday',
+                            4 => 'Thursday',
+                            5 => 'Friday',
+                            6 => 'Saturday'
+                          ];
+
+                        $hoursSTMT->execute(); //execute query again
+                        while ($hourRow = $hoursSTMT->fetch(PDO::FETCH_ASSOC)) { 
+                            //print opening times and days
+                            echo "<p>" . $days[$hourRow['day']] . "</p>";
+                            echo "<p>" . date('g:i A', strtotime($hourRow['open'])) . " - " . date('g:i A', strtotime($hourRow['close'])) . "</p>";
+                        }
+                        ?>
 
                     </div>
                 </div>
@@ -174,7 +214,7 @@
                         LEFT JOIN users ON review.userid = users.id
                         WHERE locationid = :id"; //Query for specific row
                         $stmt = $conn->prepare($sql);//Preparing statement
-                        $stmt->bindParam(':id', $id);//binding id 
+                        $stmt->bindParam(':id', $_GET['id']);//binding id 
                         $stmt->execute(); //executing query
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>

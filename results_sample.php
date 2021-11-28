@@ -192,7 +192,7 @@
                 <script type="text/javascript">
                     //Create a marker for the location
                     var Marker = L.marker([<?php echo $row['x'];?>, <?php echo $row['y'];?>], {icon:redIcon}).addTo(mymap);
-                    Marker.bindPopup("<a href=./individual_sample.php><?php echo $row['name'];?></a>");
+                    Marker.bindPopup("<a href=./individual_sample.php?id=<?php echo $row['id'];?>><?php echo $row['name'];?></a>");
                 </script>
 
                 <!--Create the result entry -->

@@ -77,3 +77,6 @@ https://stackoverflow.com/questions/12691303/php-cannot-loop-through-mysql-rows-
 https://stackoverflow.com/questions/12526194/mysql-inner-join-select-only-one-row-from-second-table
 https://stackoverflow.com/questions/4847089/mysql-joins-and-count-from-another-table
 https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
+
+date()
+https://www.w3schools.com/php/func_date_date.asp
