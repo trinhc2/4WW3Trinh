@@ -126,7 +126,7 @@
                         </form>
                     </div>
                     <!--Image of the object-->
-                    <img src="./assets/<?php echo $row["picture"]?>" alt=<?php echo $row["name"]?>>
+                    <img src="<?php echo $row["picture"]?>" alt=<?php echo $row["name"]?>>
                 </div>
                                 <!--Sidebar-->
                 <div class="sidebar">

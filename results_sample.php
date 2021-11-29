@@ -198,7 +198,7 @@
 
                 <!--Create the result entry -->
                 <div class="object">
-                    <img src="assets/<?php echo $row['picture'];?>" alt="Mikado store front">
+                    <img src="<?php echo $row['picture'];?>" alt="Mikado store front">
                     <div class="objectDesc">
                         <a href="./individual_sample.php?id=<?php echo $row['id'];?>">
                             <h1><?php echo $row['name'];?></h1>

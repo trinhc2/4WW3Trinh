@@ -17,14 +17,14 @@
         if (isset($_POST['submitReview'])) { //If the user clicks submit button this would be set
         
             $sql = "INSERT INTO `review` (userid, locationid, rating, review)
-            VALUES (:userid, :locationid, :rating, :review)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':userid', $_SESSION['userid']);
+            VALUES (:userid, :locationid, :rating, :review)"; //insert statement
+            $stmt = $conn->prepare($sql); //prepared statement
+            $stmt->bindParam(':userid', $_SESSION['userid']); //binding values
             $stmt->bindParam(':locationid', $_POST['id']);
             $stmt->bindParam(':rating', $_POST['rating']);
             $stmt->bindParam(':review', $_POST['review']);
             if ($stmt->execute() === TRUE) {
-                header('location: individual_sample.php?id=' . $_POST['id']);
+                header('location: individual_sample.php?id=' . $_POST['id']); //redirect to location page
                 die();
             }
             else {
@@ -49,10 +49,10 @@
     <?php include("./includes/header.php"); //Include header elements ?>
     <body>
         <?php     
-        if (!isset($_SESSION['isLoggedIn'])) {
+        if (!isset($_SESSION['isLoggedIn'])) {//if user is not logged in, tell them
             echo '<h2 style="color:crimson; text-align:center">Please sign in to submit a review for this location</h2>';
         }
-        else {
+        else { //else display review form
 
         
         ?>
@@ -90,7 +90,6 @@
         </form>
         <?php 
         } //end else
-        ?>
-        <?php include ("./includes/footer.php"); //Include footer elements ?>
+        include ("./includes/footer.php"); //Include footer elements ?>
     </body>
 </html>

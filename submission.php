@@ -1,4 +1,44 @@
 <!DOCTYPE html>
+<?php
+    if (session_id() == "") { //if no session, creat one
+        session_start();
+    }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "arcades";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //connect to database
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        if (isset($_POST['locationSubmit'])) { //If the user clicks submit button this would be set
+        
+            $sql = "INSERT INTO `location` (name, description, phone, country, state, city, postal code, address, x, y, picture)
+            VALUES (:name, :description, :phone, :country, :state, :city, :postalcode, :address, :x, :y, :picture)"; //insert statement
+            $stmt = $conn->prepare($sql); //prepared statement
+            $stmt->bindParam(':name', $_POST['name']); //binding values
+            $stmt->bindParam(':description', $_POST['description']);
+            $stmt->bindParam(':phone', $_POST['phoneNum']);
+            $stmt->bindParam(':country', $_POST['country']);
+            $stmt->bindParam(':state', $_POST['state']);
+            $stmt->bindParam(':city', $_POST['city']);
+            $stmt->bindParam(':postalcode', $_POST['postalCode']);
+            $stmt->bindParam(':address', $_POST['address']);
+            $stmt->bindParam(':x', $_POST['xcoord']);
+            $stmt->bindParam(':y', $_POST['ycoord']);
+            $stmt->bindParam(':picture', $_POST['locImg']);
+    
+        }
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+?>
+
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./styles/submission.css">
@@ -11,8 +51,16 @@
     include("./includes/header.php"); //Include header elements
     ?>
     <body>
+    <?php     
+        if (!isset($_SESSION['isLoggedIn'])) {//if user is not logged in, tell them
+            echo '<h2 style="color:crimson; text-align:center">Please sign in to submit a location</h2>';
+        }
+        else { //else display submission form
+
+        
+        ?>
         <!--Form for submitting a location-->
-        <form>
+        <form method="post" action="submisison.php">
             <div class="subGrid">
                 <h1 class="whole title">
                     Submission
@@ -68,7 +116,7 @@
                     <input type="file" accept="image/*" name="locImg">
                 </div>
                 <div class="fourth">
-                    <button class="submit" type="submit">
+                    <button class="submit" type="submit" name="locationSubmit">
                         Submit
                     </button>
                 </div>
@@ -77,9 +125,20 @@
                             Cancel
                         </button>
                 </div>
+                <div class="whole">
+                    <?php
+                        if ($stmt->execute() === TRUE) {
+                        echo "Location successfully added.";
+                        }
+                        else {
+                            echo "Error: " . $sql . "<br>" . $conn->error;
+                        }
+                    ?>
+                </div>
             </div>
         </form>
         <?php 
+        } //end else
         include ("./includes/footer.php"); //Include footer elements
         ?>
     </body>
