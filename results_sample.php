@@ -33,7 +33,8 @@
             $yMap = $y;
 
             //Search for locations within their area
-            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
+            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample, AVG(review.rating) as rating
+            FROM `location` 
             LEFT JOIN review ON location.id = review.locationid
             LEFT JOIN (
                 SELECT sample.locationid, sample.review
@@ -67,7 +68,8 @@
             sample left join to provide a sample, highest rated review of the location
             Where clause scans most of the location table columns for matches
             */
-            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample FROM `location` 
+            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample, AVG(review.rating) as rating
+            FROM `location` 
             LEFT JOIN review ON location.id = review.locationid
             LEFT JOIN (
                 SELECT sample.locationid, sample.review
@@ -202,22 +204,17 @@
                             <h1><?php echo $row['name'];?></h1>
                         </a>
                         <div class="rating">
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star_half
-                            </span>
-                            <!--user can click on reviews to jump to review section-->
+                        <?php
+                            for ($i = 0; $i < floor($row['rating']); $i++) {
+                                echo "<span class='material-icons'>star</span>";
+                            }
+
+                            for ($i = floor($row['rating']); $i < 5; $i++) {
+                                echo "<span class='material-icons'>star_border</span>";
+                            }
+                            
+                            ?>
+                
                             <p class="numReview"><?php echo $row['reviews']?> Reviews</p>
                         </div>
                         <p>"<?php echo $row['reviewsample']?>"</p>

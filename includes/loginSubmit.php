@@ -54,9 +54,11 @@
                     if ($stmt2->rowCount() != 0) {
                         $row = $stmt2->fetch(PDO::FETCH_ASSOC);
                         $_SESSION['name'] = $row['firstname']; //update session name
+                        $_SESSION['userid'] = $row['id']; //update session name
                         
                         $_SESSION['isLoggedIn'] = true; //update session status
                         header('location: search.php');
+                        die();
 
                     }
                     else {

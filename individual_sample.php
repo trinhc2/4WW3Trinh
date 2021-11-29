@@ -114,12 +114,16 @@
                         }
                         ?>
                         <!--Button to write a review-->
-                        <button class="reviewButton" type="button">
-                            <span style="margin-right: 10px;" class="material-icons">
-                                rate_review
-                            </span>
-                            <p>Write a Review</p>
-                        </button>
+                        <form method="post" action="review.php">
+                            <!--hidden input to pass location id to review -->
+                            <input type="hidden" name="locationid" value="<?php echo $_GET['id'];?>"></input>
+                            <button class="reviewButton" type="submit" name="reviewButton">
+                                <span style="margin-right: 10px;" class="material-icons">
+                                    rate_review
+                                </span>
+                                <p>Write a Review</p>
+                            </button>
+                        </form>
                     </div>
                     <!--Image of the object-->
                     <img src="./assets/<?php echo $row["picture"]?>" alt=<?php echo $row["name"]?>>
