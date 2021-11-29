@@ -80,3 +80,9 @@ https://stackoverflow.com/questions/1392479/using-where-and-inner-join-in-mysql
 
 date()
 https://www.w3schools.com/php/func_date_date.asp
+
+submission
+https://stackoverflow.com/questions/37182801/does-input-type-files-appear-in-post
+
+phpmyadmin on ec2 server
+https://www.tutsmake.com/how-to-install-phpmyadmin-amazon-ec2-ubuntu/

@@ -99,10 +99,7 @@
     echo "Error: " . $e->getMessage();
     }
         
-
-
     ?>
-
 
 <html lang="en">
     <head>
@@ -175,8 +172,10 @@
                     <h1>Results For "</h1>
                     <h1 id="searchResult"><?php echo $search;?></h1>
                     <h1>"</h1>
-                    <?php }?>
-                    <a href="./submission.html">
+                    <?php 
+                    } //end else
+                    ?>
+                    <a href="./submission.php">
                         <p style="color: crimson;">Location not listed?</p>
                     </a>
                 </div>

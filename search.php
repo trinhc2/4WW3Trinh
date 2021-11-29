@@ -35,7 +35,7 @@
                         <a href="./individual_sample.php">
                             <p>Sample Object</p>
                         </a>
-                        <a href="./submission.html">
+                        <a href="./submission.php">
                             <p>Submission</p>
                         </a>
                         <a href="./results_sample.php">
@@ -74,7 +74,7 @@
                         <a href="./individual_sample.php">
                             <p>Sample Object</p>
                         </a>
-                        <a href="./submission.html">
+                        <a href="./submission.php">
                             <p>Submission</p>
                         </a>
                         <a href="./results_sample.php">
