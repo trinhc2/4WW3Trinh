@@ -3,11 +3,41 @@
     if (session_id() == "") { //if no session, creat one
         session_start();
     }
+    require './aws_sdk/aws-autoloader.php';
+    use Aws\S3\S3Client;
+
+    use Aws\Exception\AwsException;
 
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "arcades";
+    
+     //S3 SETUP
+    $bucket = "trinhc2bucket";
+    $key = getenv("AWS_ACCESS_KEY");
+    $secret = getenv("AWS_SECRET_ACCESS_KEY");
+
+    //Create a S3Client
+    $s3Client = new Aws\S3\S3Client([
+        'region' => 'us-east-2',
+        'version' => 'latest',
+        'credentials' => [
+            'key' => $key,
+            'secret' => $secret,
+        ]
+    ]);
+
+    if (isset($_FILES['image'])) {
+        $result = $s3Client->putObject([
+            'Bucket' => $bucket,
+            'Key' => $_FILES['image']['name'],
+            'SourceFile' => $_FILES['image']['tmp_name'],
+        ]);
+
+        $bucketURL = "https://trinhc2bucket.s3.us-east-2.amazonaws.com/";
+        $URL = $bucketURL . $_FILES['image']['name'];
+    }
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //connect to database
@@ -16,7 +46,7 @@
 
         if (isset($_POST['locationSubmit'])) { //If the user clicks submit button this would be set
         
-            $sql = "INSERT INTO `location` (name, description, phone, country, state, city, postal code, address, x, y, picture)
+            $sql = "INSERT INTO `location` (name, description, phone, country, state, city, `postal code`, address, x, y, picture)
             VALUES (:name, :description, :phone, :country, :state, :city, :postalcode, :address, :x, :y, :picture)"; //insert statement
             $stmt = $conn->prepare($sql); //prepared statement
             $stmt->bindParam(':name', $_POST['name']); //binding values
@@ -29,7 +59,15 @@
             $stmt->bindParam(':address', $_POST['address']);
             $stmt->bindParam(':x', $_POST['xcoord']);
             $stmt->bindParam(':y', $_POST['ycoord']);
-            $stmt->bindParam(':picture', $_POST['locImg']);
+            $stmt->bindParam(':picture', $URL);
+
+            if ($stmt->execute() === TRUE) {
+            echo "Location successfully added.";
+            }
+            else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
     
         }
     }
@@ -59,15 +97,16 @@
 
         
         ?>
-        <!--Form for submitting a location-->
-        <form method="post" action="submisison.php">
+        <!--Form for submitting a location
+    https://stackoverflow.com/questions/37182801/does-input-type-files-appear-in-post-->
+        <form method="post" action="submission.php" enctype="multipart/form-data">
             <div class="subGrid">
                 <h1 class="whole title">
                     Submission
                 </h1>
                 <div class="whole">
                     <label for="name">Name</label>
-                    <input type="text"  name="name" required pattern="[A-Za-z]+">
+                    <input type="text"  name="name" required pattern="[A-Za-z\s]+">
                 </div>
                 <div class="whole">
                     <label for="phoneNum">Phone Number</label>
@@ -76,15 +115,15 @@
                 </div>
                 <div class="fourth">
                     <label for="country">Country</label>
-                    <input type="text"  name="country" required pattern="[A-Za-z]+">
+                    <input type="text"  name="country" required pattern="[A-Za-z\s]+">
                 </div>
                 <div class="fourth">
                     <label for="state">State</label>
-                    <input type="text"  name="state" required pattern="[A-Za-z]+">
+                    <input type="text"  name="state" required pattern="[A-Za-z\s]+">
                 </div>
                 <div class="fourth">
                     <label for="city">City</label>
-                    <input type="text"  name="city" required pattern="[A-Za-z]+">
+                    <input type="text"  name="city" required pattern="[A-Za-z\s]+">
                 </div>
                 <div class="fourth">
                     <label for="postalCode">
@@ -113,7 +152,7 @@
                 </div>
                 <div class="whole">
                     <label for="locImg">Location Image</label>
-                    <input type="file" accept="image/*" name="locImg">
+                    <input type="file" accept="image/*" name="image" required>
                 </div>
                 <div class="fourth">
                     <button class="submit" type="submit" name="locationSubmit">
@@ -124,16 +163,6 @@
                         <button class="cancel" type="button" onclick="location.href='search.php'">
                             Cancel
                         </button>
-                </div>
-                <div class="whole">
-                    <?php
-                        if ($stmt->execute() === TRUE) {
-                        echo "Location successfully added.";
-                        }
-                        else {
-                            echo "Error: " . $sql . "<br>" . $conn->error;
-                        }
-                    ?>
                 </div>
             </div>
         </form>

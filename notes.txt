@@ -86,3 +86,13 @@ https://stackoverflow.com/questions/37182801/does-input-type-files-appear-in-pos
 
 phpmyadmin on ec2 server
 https://www.tutsmake.com/how-to-install-phpmyadmin-amazon-ec2-ubuntu/
+
+setting up S3 buckets
+setting envrionment variables
+https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html
+https://superuser.com/questions/79612/setting-and-getting-windows-environment-variables-from-the-command-prompt/79614
+https://github.com/keithweaver/python-aws-s3
+https://stackoverflow.com/questions/34455410/error-executing-putobject-on-aws-upload-fails
+https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_hardcoded.html
+
+https://stackoverflow.com/questions/37182801/does-input-type-files-appear-in-post

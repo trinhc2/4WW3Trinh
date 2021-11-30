@@ -93,8 +93,10 @@
                 $yMap += $row['y'];
                 $count += 1;
             }
-            $xMap = $xMap / $count; //Focus map at the average latitude
-            $yMap = $yMap / $count; //Focus map at average longitude
+            if ($count > 0) {
+                $xMap = $xMap / $count; //Focus map at the average latitude
+                $yMap = $yMap / $count; //Focus map at average longitude
+            }
         }
     }
     catch(PDOException $e) {

@@ -173,7 +173,7 @@
                         shadowSize: [41, 41]
                         });
         
-                        var marker = L.marker([35.71286574986599, 139.7034547978866], {icon:redIcon}).addTo(mymap);
+                        var marker = L.marker([<?php echo $row["x"]?>, <?php echo $row["y"]?>], {icon:redIcon}).addTo(mymap);
                         marker.bindPopup("<a href=./individual_sample.php?id=<?php echo $row['id'];?>><?php echo $row['name'];?></a>").openPopup();
                         
                         setInterval(function () {
