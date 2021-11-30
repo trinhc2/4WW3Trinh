@@ -68,9 +68,12 @@
             sample left join to provide a sample, highest rated review of the location
             Where clause scans most of the location table columns for matches
             */
-            $sql = "SELECT location.*, COUNT(review.locationid) AS reviews, sample.review AS reviewsample, AVG(review.rating) as rating
+            $sql = "SELECT location.*, IFNULL(num.reviews,0) AS reviews, IFNULL(sample.review,'') AS reviewsample, IFNULL(num.rating,0) as rating
             FROM `location` 
-            LEFT JOIN review ON location.id = review.locationid
+            LEFT JOIN (
+                SELECT locationid, COUNT(locationid) as reviews, AVG(rating) as rating
+                FROM review
+                ) AS num ON location.id = num.locationid
             LEFT JOIN (
                 SELECT sample.locationid, sample.review
                 FROM review AS sample
@@ -78,7 +81,7 @@
                 LIMIT 1
                 ) AS sample
                 ON location.id = sample.locationid
-            WHERE CONCAT_WS('', `name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
+            WHERE CONCAT_WS(`name`, `country`, `state`, `city`, `postal code`, `address`, `x`, `y`) 
             LIKE :search;";
             $stmt = $conn->prepare($sql); //preparing statement
             $searchLike = "%" . $search . "%"; //Adding wildcard to search term
