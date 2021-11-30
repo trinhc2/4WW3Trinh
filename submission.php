@@ -15,11 +15,11 @@
     
      //S3 SETUP
     $bucket = "trinhc2bucket";
-    $key = getenv("AWS_ACCESS_KEY");
-    $secret = getenv("AWS_SECRET_ACCESS_KEY");
+    $key = getenv("AWS_ACCESS_KEY"); //key stored in environment variables
+    $secret = getenv("AWS_SECRET_ACCESS_KEY"); //stored in environment varibles
 
     //Create a S3Client
-    $s3Client = new Aws\S3\S3Client([
+    $s3Client = new S3Client([
         'region' => 'us-east-2',
         'version' => 'latest',
         'credentials' => [
@@ -27,6 +27,20 @@
             'secret' => $secret,
         ]
     ]);
+
+    $errors = array(); //array to keep track of errors
+
+    $name = "";
+    $description = "";
+    $phone = "";
+    $country = "";
+    $state = "";
+    $city = "";
+    $postalcode = "";
+    $address = "";
+    $x = "";
+    $y = "";
+    $URL = "";
 
     if (isset($_FILES['image'])) {
         $result = $s3Client->putObject([
@@ -46,26 +60,74 @@
 
         if (isset($_POST['locationSubmit'])) { //If the user clicks submit button this would be set
         
-            $sql = "INSERT INTO `location` (name, description, phone, country, state, city, `postal code`, address, x, y, picture)
-            VALUES (:name, :description, :phone, :country, :state, :city, :postalcode, :address, :x, :y, :picture)"; //insert statement
-            $stmt = $conn->prepare($sql); //prepared statement
-            $stmt->bindParam(':name', $_POST['name']); //binding values
-            $stmt->bindParam(':description', $_POST['description']);
-            $stmt->bindParam(':phone', $_POST['phoneNum']);
-            $stmt->bindParam(':country', $_POST['country']);
-            $stmt->bindParam(':state', $_POST['state']);
-            $stmt->bindParam(':city', $_POST['city']);
-            $stmt->bindParam(':postalcode', $_POST['postalCode']);
-            $stmt->bindParam(':address', $_POST['address']);
-            $stmt->bindParam(':x', $_POST['xcoord']);
-            $stmt->bindParam(':y', $_POST['ycoord']);
-            $stmt->bindParam(':picture', $URL);
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $phone = $_POST['phoneNum'];
+            $country = $_POST['country'];
+            $state = $_POST['state'];
+            $city = $_POST['city'];
+            $postalcode = $_POST['postalCode'];
+            $address = $_POST['address'];
+            $x = $_POST['xcoord'];
+            $y = $_POST['ycoord'];
 
-            if ($stmt->execute() === TRUE) {
-            echo "Location successfully added.";
+            //SERVERSIDE VALIDATION
+            if (empty($name)) {
+                array_push($errors, "Name is required");
             }
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+            if (empty($description)) {
+                array_push($errors, "Description is required");
+            }
+            if (empty($phone)) {
+                array_push($errors, "Phone number is required");
+            }
+            if (empty($country)) {
+                array_push($errors, "Country is required");
+            }
+            if (empty($state)) {
+                array_push($errors, "State is required");
+            }
+            if (empty($city)) {
+                array_push($errors, "City is required");
+            }
+            if (empty($postalcode)) {
+                array_push($errors, "Postal Code is required");
+            }
+            if (empty($address)) {
+                array_push($errors, "Address is required");
+            }
+            if (empty($x)) {
+                array_push($errors, "Latitude is required");
+            }
+            if (empty($y)) {
+                array_push($errors, "Longitude is required");
+            }
+            if (empty($URL)) {
+                array_push($errors, "Image is required");
+            }
+
+            if (count($errors) == 0) {
+                $sql = "INSERT INTO `location` (name, description, phone, country, state, city, `postal code`, address, x, y, picture)
+                VALUES (:name, :description, :phone, :country, :state, :city, :postalcode, :address, :x, :y, :picture)"; //insert statement
+                $stmt = $conn->prepare($sql); //prepared statement
+                $stmt->bindParam(':name', $name); //binding values
+                $stmt->bindParam(':description', $description);
+                $stmt->bindParam(':phone', $phone);
+                $stmt->bindParam(':country', $country);
+                $stmt->bindParam(':state', $state);
+                $stmt->bindParam(':city', $city);
+                $stmt->bindParam(':postalcode', $postalcode);
+                $stmt->bindParam(':address', $address);
+                $stmt->bindParam(':x', $x);
+                $stmt->bindParam(':y', $y);
+                $stmt->bindParam(':picture', $URL);
+    
+                if ($stmt->execute() === TRUE) {
+                echo "Location successfully added.";
+                }
+                else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
             }
 
     
@@ -139,16 +201,16 @@
                 </div>
                 <div class="half">
                     <label for="xcoord">X Coordinate</label>
-                    <input type="text" id="xcoord" name="xcoord" pattern="-?(\d(\.\d+)?|([1-8][0-9])(\.\d+)?|90(\.0)?)">
+                    <input type="text" id="xcoord" name="xcoord" required pattern="-?(\d(\.\d+)?|([1-8][0-9])(\.\d+)?|90(\.0)?)">
                     <button onclick="getLocation()" type="button" class="geoButton">Get Coordinates</button>
                 </div>
                 <div class="half">
                     <label for="ycoord">Y Coordinate</label>
-                    <input type="text" id="ycoord" name="ycoord" pattern="-?(\d(\.\d+)?|([1-9][0-9])(\.\d+)?|(1[0-7][0-9])(\.d+)?|180(\.0)?)">
+                    <input type="text" id="ycoord" name="ycoord" required pattern="-?(\d(\.\d+)?|([1-9][0-9])(\.\d+)?|(1[0-7][0-9])(\.d+)?|180(\.0)?)">
                 </div>
                 <div class="whole">
                     <label for="description">Description</label>
-                        <textarea name="description" placeholder="Tell us something about this place!"></textarea>
+                        <textarea name="description" placeholder="Tell us something about this place!" required></textarea>
                 </div>
                 <div class="whole">
                     <label for="locImg">Location Image</label>
@@ -163,6 +225,16 @@
                         <button class="cancel" type="button" onclick="location.href='search.php'">
                             Cancel
                         </button>
+                </div>
+                <div class="whole">
+                    <?php
+                    //If there are errors with registration, print them to the user
+                    if (count($errors) > 0) {
+                        foreach ($errors as $error) {
+                            echo "<p>$error</p>";
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </form>

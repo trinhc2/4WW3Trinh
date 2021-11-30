@@ -94,5 +94,8 @@ https://superuser.com/questions/79612/setting-and-getting-windows-environment-va
 https://github.com/keithweaver/python-aws-s3
 https://stackoverflow.com/questions/34455410/error-executing-putobject-on-aws-upload-fails
 https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_hardcoded.html
+https://stackoverflow.com/questions/19176926/how-to-make-all-objects-in-aws-s3-bucket-public-by-default
 
 https://stackoverflow.com/questions/37182801/does-input-type-files-appear-in-post
+
+https://stackoverflow.com/questions/7970824/how-to-return-0-instead-of-null-when-using-count-in-mysql
