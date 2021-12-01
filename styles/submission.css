@@ -23,6 +23,15 @@
     min-height: 100px;
     
 }
+
+error {
+    margin-block-end: 0;
+    margin-block-start: 5px;
+    font-size: 15px;
+    color: crimson;
+    font-weight: bold;
+}
+
 .whole {
     /*spans 4 columns*/
     grid-column: auto / span 4;

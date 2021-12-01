@@ -102,3 +102,7 @@ https://stackoverflow.com/questions/7970824/how-to-return-0-instead-of-null-when
 
 regex for lat/long
 https://stackoverflow.com/questions/3518504/regular-expression-for-matching-latitude-longitude-coordinates
+
+setting envrionment variables in apache
+https://stackoverflow.com/questions/146354/setting-php-variables-in-httpd-conf
+https://askubuntu.com/questions/652095/cant-find-httpd-conf

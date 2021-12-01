@@ -231,11 +231,11 @@
                     <?php
                     //If there are errors with submission, print them to the user
                     if ($locationAdded) {
-                        echo "<p>Location successfully added.</p>";
+                        echo "<p class='error'>Location successfully added.</p>";
                     }
                     if (count($errors) > 0) {
                         foreach ($errors as $error) {
-                            echo "<p>$error</p>";
+                            echo "<p class='error'>$error</p>";
                         }
                     }
                     ?>

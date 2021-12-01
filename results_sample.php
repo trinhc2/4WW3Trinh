@@ -73,6 +73,7 @@
             LEFT JOIN (
                 SELECT locationid, COUNT(locationid) as reviews, AVG(rating) as rating
                 FROM review
+                GROUP BY locationid
                 ) AS num ON location.id = num.locationid
             LEFT JOIN (
                 SELECT sample.locationid, sample.review
