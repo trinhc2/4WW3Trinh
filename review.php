@@ -16,8 +16,8 @@
 
         if (isset($_POST['submitReview'])) { //If the user clicks submit button this would be set
         
-            $sql = "INSERT INTO `review` (userid, locationid, rating, review)
-            VALUES (:userid, :locationid, :rating, :review)"; //insert statement
+            $sql = "INSERT INTO `review` (userid, locationid, rating, review, date)
+            VALUES (:userid, :locationid, :rating, :review, CURDATE())"; //insert statement
             $stmt = $conn->prepare($sql); //prepared statement
             $stmt->bindParam(':userid', $_SESSION['userid']); //binding values
             $stmt->bindParam(':locationid', $_POST['id']);
