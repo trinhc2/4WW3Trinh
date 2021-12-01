@@ -3,7 +3,10 @@ body {
     font-family: 'Roboto';
     margin: 0;
 }
-
+p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
 header {
     background-color:whitesmoke;
     /* aligning the contents in the header*/
@@ -19,6 +22,7 @@ header {
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .userAuth p {
@@ -208,5 +212,13 @@ footer {
     .nav {
         /*Swapping nav bars*/
         display: none;
+    }
+    
+    .userAuth {
+        flex-direction: column;
+    }
+
+    .userAuth p {
+        margin-right: 0px;
     }
 }

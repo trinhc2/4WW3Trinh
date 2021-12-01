@@ -29,6 +29,7 @@
     ]);
 
     $errors = array(); //array to keep track of errors
+    $locationAdded = false;
 
     $name = "";
     $description = "";
@@ -122,8 +123,8 @@
                 $stmt->bindParam(':y', $y);
                 $stmt->bindParam(':picture', $URL);
     
-                if ($stmt->execute() === TRUE) {
-                echo "Location successfully added.";
+                if ($stmt->execute() === TRUE) { //if execution was successful
+                 $locationAdded = true;
                 }
                 else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -173,7 +174,7 @@
                 <div class="whole">
                     <label for="phoneNum">Phone Number</label>
                     <!--https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number-->
-                    <input type="text" name="phoneNum" required pattern="\d{3}[\s.-]?\d{3}[\s.-]?\d{4}" placeholder="Ex: 123 456 7890">
+                    <input type="text" name="phoneNum" required pattern="[^A-Za-z]+" placeholder="Ex: 123 456 7890">
                 </div>
                 <div class="fourth">
                     <label for="country">Country</label>
@@ -201,12 +202,12 @@
                 </div>
                 <div class="half">
                     <label for="xcoord">X Coordinate</label>
-                    <input type="text" id="xcoord" name="xcoord" required pattern="-?(\d(\.\d+)?|([1-8][0-9])(\.\d+)?|90(\.0)?)">
+                    <input type="text" id="xcoord" name="xcoord" required pattern="^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$" placeholder="Up to 6 decimal places">
                     <button onclick="getLocation()" type="button" class="geoButton">Get Coordinates</button>
                 </div>
                 <div class="half">
                     <label for="ycoord">Y Coordinate</label>
-                    <input type="text" id="ycoord" name="ycoord" required pattern="-?(\d(\.\d+)?|([1-9][0-9])(\.\d+)?|(1[0-7][0-9])(\.d+)?|180(\.0)?)">
+                    <input type="text" id="ycoord" name="ycoord" required pattern="^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$" placeholder="Up to 6 decimal places">
                 </div>
                 <div class="whole">
                     <label for="description">Description</label>
@@ -228,7 +229,10 @@
                 </div>
                 <div class="whole">
                     <?php
-                    //If there are errors with registration, print them to the user
+                    //If there are errors with submission, print them to the user
+                    if ($locationAdded) {
+                        echo "<p>Location successfully added.</p>";
+                    }
                     if (count($errors) > 0) {
                         foreach ($errors as $error) {
                             echo "<p>$error</p>";

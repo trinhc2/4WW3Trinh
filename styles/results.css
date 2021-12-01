@@ -88,6 +88,7 @@ header {
     /*wrapper for rating + number of reviews*/
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
 }
 
 .numReview {

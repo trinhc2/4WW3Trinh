@@ -152,15 +152,6 @@
                 popupAnchor: [1, -34],
                 shadowSize: [41, 41]
                 });
-
-                //Markers for each of the hard coded arcades
-
-
-                var taitoMarker = L.marker([35.69002017350261, 139.70220112486624], {icon:redIcon}).addTo(mymap);
-                taitoMarker.bindPopup("<a href=./individual_sample.html>Taito Game Station</a>");
-                
-                var segaMarker = L.marker([35.68979753397573, 139.6973720825395], {icon:redIcon}).addTo(mymap);
-                segaMarker.bindPopup("<a href=./individual_sample.html>Club Sega</a>");
                 
                 //Prevents leaflet loading error
                 setInterval(function () {
@@ -229,63 +220,6 @@
                     } //End while loopp 
                 
                     ?>
-                <div class="object">
-                    <img src="assets/clubsega.jpeg" alt="Club Sega store front">
-                    <div class="objectDesc">
-                        <a href="./individual_sample.html">
-                            <h1>Club Sega test test test test test test test</h1>
-                        </a>
-                        
-                        <div class="rating">
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <span class="material-icons">
-                                star
-                            </span>
-                            <!--user can click on reviews to jump to review section-->
-                            <p class="numReview">1 Reviews</p>
-                        </div>
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                    </div>
-                </div>
-                <div class="object">
-                    <img src="assets/taito.jpg" alt="Taito Station store front">
-                    <div class="objectDesc">
-                        <a href="./individual_sample.html">
-                            <h1>Taito Game Station</h1>
-                        </a>
-                        
-                        <div class="rating">
-                            <span class="material-icons">
-                                star_border
-                            </span>
-                            <span class="material-icons">
-                                star_border
-                            </span>
-                            <span class="material-icons">
-                                star_border
-                            </span>
-                            <span class="material-icons">
-                                star_border
-                            </span>
-                            <span class="material-icons">
-                                star_border
-                            </span>
-                            <!--user can click on reviews to jump to review section-->
-                            <p class="numReview">0 Reviews</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <?php 
