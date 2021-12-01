@@ -15,3 +15,4 @@ Notes
    * Password: password
  * Clicking "Arcades Near You" on main page (search) will attempt to find arcades near your area using location api.
  * Location API does not work on live website due to no https, but works locally.
+ * Search works with various terms. (try "Japan" or "Canada" on live website)
